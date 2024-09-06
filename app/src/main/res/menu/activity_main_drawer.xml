@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group>
+        <item android:id="@+id/nav_item_one"
+            android:icon="?android:attr/actionModeCloseDrawable"
+            android:title="Perfil"/>
+        <item android:id="@+id/nav_item_two"
+            android:icon="?android:attr/actionModeCloseDrawable"
+            android:title="Carrito"/>
+        <item android:id="@+id/nav_item_three"
+            android:icon="?android:attr/actionModeCloseDrawable"
+            android:title="Que mas?"/>
+    </group>
+    <item android:title="Title 1">
+        <menu>
+            <item android:id="@+id/nav_item_six"
+                android:icon="?android:attr/actionModeCloseDrawable"
+                android:title="Item A"/>
+            <item android:id="@+id/nav_item_seven"
+                android:icon="?android:attr/actionModeCloseDrawable"
+                android:title="Item B"/>
+        </menu>
+    </item>
+</menu>

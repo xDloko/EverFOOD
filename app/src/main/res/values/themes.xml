@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.EverFOOD" parent="Theme.AppCompat.Light.NoActionBar" />
+
+    <style name="Theme.EverFOOD.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.EverFOOD.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.EverFOOD.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    
+    <item name="windowActionBar" type="bool">false</item>
+    <item name="windowNoTitle" type="bool">true</item>
+</resources>

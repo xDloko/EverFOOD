@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/login"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_general"
+    android:gravity="top"
+    android:padding="16dp"
+    tools:context=".FirstMain.FirstAppActivity">
+
+    <ImageButton
+        android:id="@+id/back_button"
+        android:contentDescription="@string/back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="?android:attr/actionModeCloseDrawable"
+        android:minHeight="49dp"
+        />
+
+
+    <LinearLayout
+        android:layout_marginTop="60dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:contentDescription="@string/everfood"
+            android:layout_width="158dp"
+            android:layout_height="160dp"
+            android:src="@drawable/everfoodonpng" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_margin="16dp"
+            android:background="@drawable/rounded_corner"
+            android:padding="20dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:layout_margin="8sp"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:text="Usuario"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Ingrese su Usuario"
+                android:textColor="@color/black"
+                android:textColorHint="#5D5D5D"
+                android:textSize="18sp"
+                android:background="@drawable/rounded_corner"
+                android:padding="18dp"
+                android:inputType="text"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:id="@+id/username_input" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:layout_margin="8sp"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:text="Contraseña"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Ingrese su Contraseña"
+                android:textColor="@color/black"
+                android:textColorHint="#5D5D5D"
+                android:textSize="18sp"
+                android:background="@drawable/rounded_corner"
+                android:padding="18dp"
+                android:inputType="textPassword"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:id="@+id/password_input" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingLeft="35dp"
+            android:paddingRight="35dp">
+
+            <Button
+                android:paddingHorizontal="28dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Iniciar Sesión"
+                android:background="@drawable/rounded_corner_black"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:paddingTop="16dp"
+                android:paddingBottom="16dp"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:id="@+id/login_button" />
+
+            <Button
+                android:id="@+id/forgot_password_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/transparentbackground"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:paddingHorizontal="18dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:text="Olvido Su contraseña?"
+                android:textColor="#5B5B5B"
+                android:layout_marginTop="20sp"
+                android:layout_marginRight="72sp"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+
+
+</RelativeLayout>
