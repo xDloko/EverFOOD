@@ -10,8 +10,10 @@ import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.CheckBox
 import android.widget.EditText
+import android.widget.ImageButton
 import android.widget.LinearLayout
 import android.widget.Toast
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
@@ -36,6 +38,12 @@ class PedidoFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_pedido, container, false)
+
+        val backbutton: ImageButton = view.findViewById(R.id.back_button)
+
+        backbutton.setOnClickListener {
+            findNavController().navigate(R.id.action_pedidoFragment_to_homeFragment2)
+        }
 
 
 

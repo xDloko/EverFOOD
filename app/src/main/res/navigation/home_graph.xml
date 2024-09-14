@@ -20,5 +20,9 @@
         android:id="@+id/pedidoFragment"
         android:name="com.stormcode.everfood.PedidoFragment"
         android:label="fragment_pedido"
-        tools:layout="@layout/fragment_pedido" />
+        tools:layout="@layout/fragment_pedido" >
+        <action
+            android:id="@+id/action_pedidoFragment_to_homeFragment2"
+            app:destination="@id/homeFragment" />
+    </fragment>
 </navigation>

@@ -28,8 +28,10 @@ class FirstAppActivity : AppCompatActivity() {
             val username = usernameEditText.text.toString()
             val password = passwordEditText.text.toString()
 
-            if (userRepository.authenticateUser(username, password)) {
-
+            if (userRepository.authenticateUser(username, password))
+            {
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
             } else {
                 print("usuario o contraseña incorrecta")
             }
