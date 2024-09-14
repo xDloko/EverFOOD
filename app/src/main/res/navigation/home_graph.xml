@@ -9,5 +9,16 @@
         android:name="com.stormcode.everfood.HomeFragment"
         android:label="fragment_home"
 
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_pedidoFragment"
+            app:destination="@id/pedidoFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out" />
+    </fragment>
+    <fragment
+        android:id="@+id/pedidoFragment"
+        android:name="com.stormcode.everfood.PedidoFragment"
+        android:label="fragment_pedido"
+        tools:layout="@layout/fragment_pedido" />
 </navigation>
