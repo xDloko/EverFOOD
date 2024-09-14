@@ -2,14 +2,14 @@ package com.stormcode.everfood.FirstMain
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.EditText
 import android.widget.ImageButton
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.stormcode.everfood.FirstMain.UserRepository
 import com.stormcode.everfood.R
+import android.widget.EditText
+import com.stormcode.everfood.FirstMain.UserRepository
 
 
 class FirstAppActivity : AppCompatActivity() {
