@@ -4,10 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageButton
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.stormcode.everfood.R
 import android.widget.EditText
 import com.stormcode.everfood.FirstMain.UserRepository
@@ -15,7 +12,7 @@ import com.stormcode.everfood.FirstMain.UserRepository
 
 class FirstAppActivity : AppCompatActivity() {
 
-    private  lateinit var userRepository : UserRepository
+    private lateinit var userRepository: UserRepository
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,20 +20,21 @@ class FirstAppActivity : AppCompatActivity() {
 
         userRepository = UserRepository(this)
 
-        val usernameEditText : EditText = findViewById(R.id.username)
-        val passwordEditText : EditText = findViewById(R.id.password)
-        val loginBtn : Button = findViewById(R.id.login_btn)
+        val usernameEditText: EditText = findViewById(R.id.username_input)
+        val passwordEditText: EditText = findViewById(R.id.password_input)
+        val loginBtn: Button = findViewById(R.id.login_button)
 
         loginBtn.setOnClickListener {
-            val username =  usernameInput.text.toString()
-            val password =  passwordInput.text.toString()
+            val username = usernameEditText.text.toString()
+            val password = passwordEditText.text.toString()
 
             if (userRepository.authenticateUser(username, password)) {
 
-            } else { print("usuario o contraseña incorrecta")}
+            } else {
+                print("usuario o contraseña incorrecta")
+            }
 
 
-        }
         }
 
         val navigateButton: ImageButton = findViewById(R.id.back_button)
@@ -47,6 +45,5 @@ class FirstAppActivity : AppCompatActivity() {
         }
 
 
-
-
     }
+}
