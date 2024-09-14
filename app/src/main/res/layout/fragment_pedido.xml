@@ -3,12 +3,228 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".PedidoFragment">
 
-
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:id="@+id/linearImage"
+        >
+
+        <ImageView
+            android:layout_marginTop="40dp"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
+            android:src="@drawable/youtlogo" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="450dp"
+        android:layout_marginTop="55dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+
+
+        >
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewComidas"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:scrollbars="vertical"
+
+            />
+
+
+        <LinearLayout
+            android:id="@+id/linearDomicilio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            >
+
+            <TextView
+                android:layout_width="80dp"
+                android:textAlignment="textEnd"
+                android:layout_height="wrap_content"
+                android:text="Domicilio: "
+                android:textSize="16sp"
+                android:textColor="@color/black"
+
+                />
+
+            <TextView
+                android:id="@+id/tvDomicilio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="$ 0.00"
+                android:textSize="14sp"
+                android:textColor="@color/black"
+                android:background="@drawable/rounded_corner"
+                android:padding="8dp"
+                android:layout_marginLeft="4dp"
+
+                />
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearTotal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            >
+
+            <TextView
+                android:layout_width="80dp"
+                android:textAlignment="textEnd"
+                android:layout_height="wrap_content"
+                android:text="Total: "
+                android:textSize="16sp"
+                android:textColor="@color/black"
+
+                />
+
+            <TextView
+                android:id="@+id/tvTotal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="$ 0.00"
+                android:textSize="14sp"
+                android:textColor="@color/black"
+                android:background="@drawable/rounded_corner"
+                android:padding="8dp"
+                android:layout_marginLeft="4dp"
+
+                />
+
+
+
+        </LinearLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <CheckBox
+                    android:id="@+id/checkBoxDomicilio"
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+                    android:text="Domiciolio"
+
+                    />
+
+                <EditText
+                    android:id="@+id/inputDireccion"
+                    android:layout_width="320dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Ingrese Direccion"
+                    android:textSize="12dp"
+                    android:visibility="gone" />
+
+                <EditText
+                    android:id="@+id/inputTelefono"
+                    android:layout_width="320dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Ingrese Telefono"
+                    android:textSize="12dp"
+                    android:visibility="gone" />
+
+                <EditText
+                    android:id="@+id/inputNombreRecibe"
+                    android:layout_width="320dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Nombre a Recibir"
+                    android:textSize="12dp"
+                    android:visibility="gone" />
+
+                <CheckBox
+                    android:id="@+id/checkBoxRecolecion"
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+                    android:text="Recolecion en Lugar"
+
+                    />
+
+            </LinearLayout>
+
+
+        </ScrollView>
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_marginBottom="20dp"
+
+        >
+
+        <ImageButton
+            android:id="@+id/back_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_corner"
+            android:contentDescription="@string/back"
+            android:minHeight="50dp"
+            android:padding="12dp"
+            app:srcCompat="?android:attr/actionModeCloseDrawable" />
+
+        <Button
+            android:id="@+id/efectivo_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center"
+            android:background="@drawable/rounded_corner_black"
+            android:minHeight="50dp"
+            android:paddingHorizontal="8dp"
+            android:text="Efectivo"
+            android:layout_marginLeft="20dp"
+
+            />
+
+        <Button
+            android:id="@+id/transferencia_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center"
+            android:background="@drawable/rounded_corner_black"
+            android:minHeight="50dp"
+            android:paddingHorizontal="8dp"
+            android:text="Transferencia"
+            android:layout_marginLeft="20dp"
+
+            />
+
+    </LinearLayout>
 
 </FrameLayout>

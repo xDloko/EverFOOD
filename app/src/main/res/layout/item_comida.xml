@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+
+        >
+
+        <TextView
+            android:id="@+id/tvNombreComida"
+            android:layout_width="180dp"
+            android:textAlignment="center"
+            android:layout_height="wrap_content"
+            android:text="pruebavistacomida"
+            android:textSize="14sp"
+            android:textColor="@color/black"
+            android:paddingVertical="5dp"
+            android:paddingHorizontal="10dp"
+            android:background="@drawable/rounded_corner"
+            />
+
+        <TextView
+            android:id="@+id/tvPrecioComida"
+            android:layout_width="70dp"
+            android:textAlignment="center"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_corner"
+            android:text="0.000"
+            android:textSize="14sp"
+            android:textColor="@color/black"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="5dp"
+            android:layout_marginLeft="8dp"
+            />
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginLeft="10dp">
+
+            <!-- TextView para mostrar el contador -->
+            <TextView
+                android:id="@+id/tvContador"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:layout_marginLeft="5dp"
+                android:textSize="16sp"
+                android:padding="8dp" />
+
+            <!-- Botón para aumentar -->
+            <Button
+                android:id="@+id/btnIncrease"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:textSize="14sp"
+                android:padding="0dp"
+                android:background="@drawable/rounded_corner"
+                android:text="▲" />
+
+            <!-- Botón para disminuir -->
+            <Button
+                android:id="@+id/btnDecrease"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:textSize="14sp"
+                android:padding="0dp"
+                android:background="@drawable/rounded_corner"
+                android:text="▼" />
+
+        </LinearLayout>
+
+
+
+
+    </LinearLayout>
+
+</LinearLayout>
