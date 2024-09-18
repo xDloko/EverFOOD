@@ -1,13 +1,18 @@
 package com.stormcode.everfood.FirstMain
 
+import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
 import android.view.MenuItem
+import android.widget.Button
+import android.widget.ImageButton
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -35,8 +40,51 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         supportActionBar?.setDisplayShowHomeEnabled(true)
         supportActionBar?.setHomeButtonEnabled(true)
 
+
         val navigationView: NavigationView = findViewById(R.id.nav_view)
         navigationView.setNavigationItemSelectedListener(this)
+
+        val headerView = navigationView.getHeaderView(0)
+        val usuarioTexview: TextView = headerView.findViewById(R.id.nav_header_textView)
+        val imagePerfil: ImageButton = headerView.findViewById(R.id.nav_header_imagePerfil)
+        val buttonLogOut: Button = headerView.findViewById(R.id.nav_header_logout)
+
+        //sharedinforeferences
+        val sharedPreferences = getSharedPreferences("MyAppPrefs", MODE_PRIVATE)
+        val isLoggedIn = sharedPreferences.getBoolean("isLoggedIn", false)
+        val username = sharedPreferences.getString("username", null)
+
+        if (username != null) {
+            usuarioTexview.text = username
+        }
+
+        imagePerfil.setOnClickListener {
+            if (isLoggedIn) {
+                //Redirrecionar al perfil si esta logeado
+                Toast.makeText(this, "Perfil", Toast.LENGTH_SHORT).show()
+            } else {
+                //Redirrecionar al login si no esta logeado
+                Toast.makeText(this, "No has iniciado Sesion", Toast.LENGTH_SHORT).show()
+                val intent = Intent(this, FirstAppActivity::class.java)
+                startActivity(intent)
+                finish()
+            }
+        }
+
+        val editor = sharedPreferences.edit()
+        buttonLogOut.setOnClickListener {
+            if (isLoggedIn) {
+                val intent = Intent(this, FirstAppActivity::class.java)
+                editor.remove("isLoggedIn")
+                editor.remove("username")
+                editor.apply()
+                startActivity(intent)
+                finish()
+
+            } else {
+                Toast.makeText(this, "No hay Ninguna Sesion", Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {

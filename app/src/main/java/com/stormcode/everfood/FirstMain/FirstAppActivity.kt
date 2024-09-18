@@ -1,13 +1,16 @@
 package com.stormcode.everfood.FirstMain
 
+import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.widget.Button
+import android.widget.EditText
 import android.widget.ImageButton
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.stormcode.everfood.R
-import android.widget.EditText
-import com.stormcode.everfood.FirstMain.UserRepository
 
 
 class FirstAppActivity : AppCompatActivity() {
@@ -18,23 +21,44 @@ class FirstAppActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_first_app)
 
+
+
+
         userRepository = UserRepository(this)
 
         val usernameEditText: EditText = findViewById(R.id.username_input)
         val passwordEditText: EditText = findViewById(R.id.password_input)
         val loginBtn: Button = findViewById(R.id.login_button)
 
+        val sharedPreferences = getSharedPreferences("MyAppPrefs", MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+
+
+
         loginBtn.setOnClickListener {
             val username = usernameEditText.text.toString()
             val password = passwordEditText.text.toString()
+            val loadingDialog = Dialog(this)
+            loadingDialog.setContentView(R.layout.dialog)
+            loadingDialog.setCancelable(false)
+            loadingDialog.show()
+            Handler(Looper.getMainLooper()).postDelayed({
+                if (userRepository.authenticateUser(username, password))
+                {
+                    val intent = Intent(this, MainActivity::class.java)
+                    loadingDialog.dismiss()
+                    editor.putBoolean("isLoggedIn", true)
+                    editor.putString("username", username)
+                    editor.apply()
+                    startActivity(intent)
+                    finish()
+                } else {
+                    loadingDialog.dismiss()
+                    Toast.makeText(this, "usuario o contraseña incorrecta", Toast.LENGTH_SHORT).show()
+                }
+            }, 3000)
 
-            if (userRepository.authenticateUser(username, password))
-            {
-                val intent = Intent(this, MainActivity::class.java)
-                startActivity(intent)
-            } else {
-                print("usuario o contraseña incorrecta")
-            }
+
 
 
         }
@@ -45,6 +69,9 @@ class FirstAppActivity : AppCompatActivity() {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
+
+
+
 
 
     }
