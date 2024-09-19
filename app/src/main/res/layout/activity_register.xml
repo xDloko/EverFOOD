@@ -49,12 +49,12 @@
                 android:textColor="@color/black"
                 android:layout_margin="8sp"
                 android:fontFamily="sans-serif-condensed-medium"
-                android:text="Usuario"/>
+                android:text="Ingrese Correo"/>
 
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Ingrese su Usuario"
+                android:hint="Correos Validos"
                 android:textColor="@color/black"
                 android:textColorHint="#5D5D5D"
                 android:textSize="18sp"
@@ -62,7 +62,7 @@
                 android:padding="18dp"
                 android:inputType="text"
                 android:fontFamily="sans-serif-condensed-medium"
-                android:id="@+id/username_input" />
+                android:id="@+id/correo_input" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -71,12 +71,34 @@
                 android:textColor="@color/black"
                 android:layout_margin="8sp"
                 android:fontFamily="sans-serif-condensed-medium"
-                android:text="Contraseña"/>
+                android:text="Ingrese Nombre"/>
 
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Ingrese su Contraseña"
+                android:hint="Nombre y Apellidos"
+                android:textColor="@color/black"
+                android:textColorHint="#5D5D5D"
+                android:textSize="18sp"
+                android:background="@drawable/rounded_corner"
+                android:padding="18dp"
+                android:inputType="textPassword"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:id="@+id/user_input"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:layout_margin="8sp"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:text="Crear Contraseña"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="6 Letras, Numeros y Caracteres"
                 android:textColor="@color/black"
                 android:textColorHint="#5D5D5D"
                 android:textSize="18sp"
@@ -100,7 +122,7 @@
                 android:paddingHorizontal="28dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Iniciar Sesión"
+                android:text="Crear Cuenta"
                 android:background="@drawable/rounded_corner_black"
                 android:textColor="@color/white"
                 android:textSize="20sp"
@@ -109,43 +131,6 @@
                 android:fontFamily="sans-serif-condensed-medium"
                 android:id="@+id/login_button" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                >
-
-                <Button
-                    android:id="@+id/Registrarse_button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/transparentbackground"
-                    android:fontFamily="sans-serif-condensed-medium"
-                    android:paddingHorizontal="18dp"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp"
-                    android:text="Registrarse"
-                    android:textColor="#5B5B5B"
-                    android:layout_marginTop="20sp"
-                    android:layout_marginRight="20sp"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
-                <Button
-                    android:id="@+id/forgot_password_button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/transparentbackground"
-                    android:fontFamily="sans-serif-condensed-medium"
-                    android:paddingHorizontal="18dp"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp"
-                    android:text="Olvido Su contraseña?"
-                    android:textColor="#5B5B5B"
-                    android:layout_marginTop="20sp"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
-
-            </LinearLayout>
 
         </LinearLayout>
 

@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".HomeFragment">
 
@@ -11,17 +13,54 @@
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="260dp"
-        android:src="@drawable/everfoodlogomoderno" />
+        android:layout_height="180dp"
+        android:contentDescription="Stores"
+        android:src="@drawable/everfoodlogomoderno"
+
+        />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal"
-
-
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:layout_marginTop="55dp"
         >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+            <EditText
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:hint="Buscar"
+                android:textColor="@color/black"
+                android:textColorHint="#5D5D5D"
+                android:textSize="18sp"
+                android:padding="12dp"
+                android:background="@drawable/rounded_corner"/>
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_corner"
+                android:contentDescription="@string/back"
+                android:minHeight="49dp"
+                android:paddingVertical="5dp"
+                android:paddingHorizontal="12dp"
+                app:srcCompat="@drawable/search_icon" />
+
+
+        </LinearLayout>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewComidas"
+            android:layout_width="match_parent"
+            android:layout_height="420dp"
+            android:scrollbars="vertical"
+
+            />
 
 
     </LinearLayout>
@@ -43,14 +82,13 @@
             android:layout_gravity="bottom|center"
             android:background="@drawable/rounded_corner_black"
             android:minHeight="50dp"
+            android:textSize="14sp"
             android:paddingHorizontal="8dp"
             android:text="Hacer Pedido"
 
             />
 
     </LinearLayout>
-
-
 
 
 

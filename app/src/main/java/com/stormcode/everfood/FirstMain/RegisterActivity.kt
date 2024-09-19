@@ -1,5 +1,6 @@
 package com.stormcode.everfood.FirstMain
 
+import android.annotation.SuppressLint
 import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
@@ -13,29 +14,32 @@ import androidx.appcompat.app.AppCompatActivity
 import com.stormcode.everfood.R
 
 
-class FirstAppActivity : AppCompatActivity() {
+class RegisterActivity : AppCompatActivity() {
 
     private lateinit var userRepository: UserRepository
 
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_first_app)
+        setContentView(R.layout.activity_register)
 
 
 
 
         userRepository = UserRepository(this)
 
-        val usernameEditText: EditText = findViewById(R.id.username_input)
+        val correoEditText: EditText = findViewById(R.id.correo_input)
+        val usernameEditText: EditText = findViewById(R.id.user_input)
         val passwordEditText: EditText = findViewById(R.id.password_input)
-        val loginBtn: Button = findViewById(R.id.login_button)
+        val registerBtn: Button = findViewById(R.id.login_button)
 
         val sharedPreferences = getSharedPreferences("MyAppPrefs", MODE_PRIVATE)
         val editor = sharedPreferences.edit()
 
 
 
-        loginBtn.setOnClickListener {
+        registerBtn.setOnClickListener {
+            val correo = correoEditText.text.toString()
             val username = usernameEditText.text.toString()
             val password = passwordEditText.text.toString()
             val loadingDialog = Dialog(this)
@@ -56,7 +60,7 @@ class FirstAppActivity : AppCompatActivity() {
                     loadingDialog.dismiss()
                     Toast.makeText(this, "usuario o contraseña incorrecta", Toast.LENGTH_SHORT).show()
                 }
-            }, 3000)
+            }, 2000)
 
 
 
@@ -64,15 +68,11 @@ class FirstAppActivity : AppCompatActivity() {
         }
 
         val navigateButton: ImageButton = findViewById(R.id.back_button)
-        navigateButton.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-        }
 
-        val registerButton: Button = findViewById(R.id.Registrarse_button)
-        registerButton.setOnClickListener {
-            val intent = Intent(this, RegisterActivity::class.java)
+        navigateButton.setOnClickListener {
+            val intent = Intent(this, FirstAppActivity::class.java)
             startActivity(intent)
+            finish()
         }
 
 
