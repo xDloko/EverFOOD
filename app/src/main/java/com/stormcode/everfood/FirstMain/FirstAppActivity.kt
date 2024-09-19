@@ -1,5 +1,6 @@
 package com.stormcode.everfood.FirstMain
 
+import android.annotation.SuppressLint
 import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
@@ -11,22 +12,20 @@ import android.widget.ImageButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.stormcode.everfood.R
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 
 class FirstAppActivity : AppCompatActivity() {
 
-    private lateinit var userRepository: UserRepository
-
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_first_app)
 
 
-
-
-        userRepository = UserRepository(this)
-
-        val usernameEditText: EditText = findViewById(R.id.username_input)
+        val emailEditText: EditText = findViewById(R.id.email_input)
         val passwordEditText: EditText = findViewById(R.id.password_input)
         val loginBtn: Button = findViewById(R.id.login_button)
 
@@ -36,29 +35,40 @@ class FirstAppActivity : AppCompatActivity() {
 
 
         loginBtn.setOnClickListener {
-            val username = usernameEditText.text.toString()
+            val email = emailEditText.text.toString()
             val password = passwordEditText.text.toString()
             val loadingDialog = Dialog(this)
             loadingDialog.setContentView(R.layout.dialog)
             loadingDialog.setCancelable(false)
             loadingDialog.show()
+            val request = LoginRequest(email, password)
+
             Handler(Looper.getMainLooper()).postDelayed({
-                if (userRepository.authenticateUser(username, password))
-                {
-                    val intent = Intent(this, MainActivity::class.java)
-                    loadingDialog.dismiss()
-                    editor.putBoolean("isLoggedIn", true)
-                    editor.putString("username", username)
-                    editor.apply()
-                    startActivity(intent)
-                    finish()
-                } else {
-                    loadingDialog.dismiss()
-                    Toast.makeText(this, "usuario o contraseña incorrecta", Toast.LENGTH_SHORT).show()
-                }
+                RetrofitClient.authService.login(request).enqueue(object : Callback<LoginResponse> {
+                    override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
+                        if (response.isSuccessful) {
+                            val loginResponse = response.body()
+                            val intent = Intent(this@FirstAppActivity, MainActivity::class.java)
+                            loadingDialog.dismiss()
+                            editor.putBoolean("isLoggedIn", true)
+                            editor.putString("username", loginResponse?.username)
+                            editor.putString("email", loginResponse?.email)
+                            editor.apply()
+                            startActivity(intent)
+                            finish()
+                            Toast.makeText(this@FirstAppActivity, "Bienvenido ${loginResponse?.username}", Toast.LENGTH_SHORT).show()
+                        } else {
+                            loadingDialog.dismiss()
+                            Toast.makeText(this@FirstAppActivity, "Credenciales incorrectas", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+
+                    override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
+                        loadingDialog.dismiss()
+                        Toast.makeText(this@FirstAppActivity, "Error de conexión", Toast.LENGTH_SHORT).show()
+                    }
+                })
             }, 3000)
-
-
 
 
         }

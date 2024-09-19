@@ -13,6 +13,7 @@
 
     <ImageView
         android:layout_width="match_parent"
+        android:layout_marginTop="20dp"
         android:layout_height="180dp"
         android:contentDescription="Stores"
         android:src="@drawable/everfoodlogomoderno"
@@ -32,13 +33,15 @@
             android:orientation="horizontal"
             >
             <EditText
-                android:layout_width="350dp"
+                android:layout_width="310dp"
                 android:layout_height="wrap_content"
                 android:hint="Buscar"
                 android:textColor="@color/black"
                 android:textColorHint="#5D5D5D"
                 android:textSize="18sp"
                 android:padding="12dp"
+                android:layout_marginVertical="10dp"
+                android:layout_marginLeft="20dp"
                 android:background="@drawable/rounded_corner"/>
             <ImageButton
                 android:layout_width="wrap_content"
@@ -48,6 +51,7 @@
                 android:minHeight="49dp"
                 android:paddingVertical="5dp"
                 android:paddingHorizontal="12dp"
+                android:layout_margin="10dp"
                 app:srcCompat="@drawable/search_icon" />
 
 
@@ -59,6 +63,7 @@
             android:layout_width="match_parent"
             android:layout_height="420dp"
             android:scrollbars="vertical"
+            android:padding="14dp"
 
             />
 

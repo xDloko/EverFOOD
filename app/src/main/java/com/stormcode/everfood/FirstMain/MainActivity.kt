@@ -52,10 +52,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         //sharedinforeferences
         val sharedPreferences = getSharedPreferences("MyAppPrefs", MODE_PRIVATE)
         val isLoggedIn = sharedPreferences.getBoolean("isLoggedIn", false)
-        val username = sharedPreferences.getString("username", null)
+        val email = sharedPreferences.getString("email", null)
 
-        if (username != null) {
-            usuarioTexview.text = username
+        if (email != null) {
+            usuarioTexview.text = email
         }
 
         imagePerfil.setOnClickListener {
@@ -77,6 +77,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 val intent = Intent(this, FirstAppActivity::class.java)
                 editor.remove("isLoggedIn")
                 editor.remove("username")
+                editor.remove("email")
                 editor.apply()
                 startActivity(intent)
                 finish()

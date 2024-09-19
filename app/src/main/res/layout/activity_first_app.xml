@@ -49,12 +49,12 @@
                 android:textColor="@color/black"
                 android:layout_margin="8sp"
                 android:fontFamily="sans-serif-condensed-medium"
-                android:text="Usuario"/>
+                android:text="Correo:"/>
 
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Ingrese su Usuario"
+                android:hint="Ingrese su Correo"
                 android:textColor="@color/black"
                 android:textColorHint="#5D5D5D"
                 android:textSize="18sp"
@@ -62,7 +62,7 @@
                 android:padding="18dp"
                 android:inputType="text"
                 android:fontFamily="sans-serif-condensed-medium"
-                android:id="@+id/username_input" />
+                android:id="@+id/email_input" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -71,7 +71,7 @@
                 android:textColor="@color/black"
                 android:layout_margin="8sp"
                 android:fontFamily="sans-serif-condensed-medium"
-                android:text="Contraseña"/>
+                android:text="Contraseña:"/>
 
             <EditText
                 android:layout_width="match_parent"
