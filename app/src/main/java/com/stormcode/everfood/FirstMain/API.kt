@@ -8,14 +8,17 @@ import retrofit2.http.GET
 data class LoginRequest(val email: String, val password: String)
 data class LoginResponse(val id: String, val email: String, val username: String, val token: String)
 
+data class RegisterRequest(val email: String, val password: String, val username: String)
+data class RegisterResponse(val id: String, val username: String, val email: String)
+
 
 interface AuthService {
 
-    @POST("login")
+    @POST("api/login")
     fun login(@Body request: LoginRequest): Call<LoginResponse>
 
-    //@POST("/register")
-    //fun register(@Body request: RegisterRequest): Call<RegisterResponse>
+    @POST("api/register")
+    fun register(@Body request: RegisterRequest): Call<RegisterResponse>
 
     //@GET("/profile")
     //fun profile(): Call<ProfileResponse>

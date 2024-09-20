@@ -29,7 +29,6 @@
             android:exported="true"
             android:label="Ever Food"
             android:theme="@style/Theme.EverFOOD">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

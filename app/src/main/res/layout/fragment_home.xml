@@ -17,6 +17,7 @@
         android:layout_height="180dp"
         android:contentDescription="Stores"
         android:src="@drawable/everfoodlogomoderno"
+        android:id="@+id/logo_store"
 
         />
 

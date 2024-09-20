@@ -1,11 +1,14 @@
 package com.stormcode.everfood
 
+import android.annotation.SuppressLint
+import android.graphics.Rect
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import androidx.navigation.fragment.findNavController
 
 
@@ -26,6 +29,7 @@ class HomeFragment : Fragment() {
         }
     }
 
+    @SuppressLint("MissingInflatedId")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -34,6 +38,30 @@ class HomeFragment : Fragment() {
         val btnNavigate: Button = root.findViewById(R.id.pedido_button)
         btnNavigate.setOnClickListener {
             findNavController().navigate(R.id.action_homeFragment_to_pedidoFragment)
+        }
+
+
+        val logo_store: ImageView = root.findViewById(R.id.logo_store)
+
+        root.viewTreeObserver.addOnGlobalLayoutListener {
+            val rect = Rect()
+            root.getWindowVisibleDisplayFrame(rect)
+            val screenHeight = root.rootView.height
+            val keypadHeight = screenHeight - rect.bottom
+
+            if (keypadHeight > screenHeight * 0.15) {
+                logo_store.visibility = View.GONE
+                btnNavigate.visibility = View.GONE
+
+
+
+            } else {
+                logo_store.visibility = View.VISIBLE
+                btnNavigate.visibility = View.VISIBLE
+
+
+
+            }
         }
         // Inflate the layout for this fragment
         return root

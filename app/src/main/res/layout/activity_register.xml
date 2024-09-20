@@ -82,7 +82,7 @@
                 android:textSize="18sp"
                 android:background="@drawable/rounded_corner"
                 android:padding="18dp"
-                android:inputType="textPassword"
+                android:inputType="text"
                 android:fontFamily="sans-serif-condensed-medium"
                 android:id="@+id/user_input"/>
 
@@ -129,7 +129,7 @@
                 android:paddingTop="16dp"
                 android:paddingBottom="16dp"
                 android:fontFamily="sans-serif-condensed-medium"
-                android:id="@+id/login_button" />
+                android:id="@+id/register_button" />
 
 
         </LinearLayout>
