@@ -11,6 +11,11 @@ import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.stormcode.everfood.FirstMain.activitys.MainActivity
+import com.stormcode.everfood.FirstMain.activitys.RegisterActivity
+import com.stormcode.everfood.FirstMain.api.LoginRequest
+import com.stormcode.everfood.FirstMain.api.LoginResponse
+import com.stormcode.everfood.FirstMain.api.RetrofitClient
 import com.stormcode.everfood.R
 import retrofit2.Call
 import retrofit2.Callback

@@ -1,4 +1,4 @@
-package com.stormcode.everfood.FirstMain
+package com.stormcode.everfood.FirstMain.activitys
 
 import android.annotation.SuppressLint
 import android.app.Dialog
@@ -11,6 +11,10 @@ import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.stormcode.everfood.FirstMain.FirstAppActivity
+import com.stormcode.everfood.FirstMain.api.RegisterRequest
+import com.stormcode.everfood.FirstMain.api.RegisterResponse
+import com.stormcode.everfood.FirstMain.api.RetrofitClient
 import com.stormcode.everfood.R
 import retrofit2.Call
 import retrofit2.Callback

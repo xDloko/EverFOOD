@@ -1,4 +1,4 @@
-package com.stormcode.everfood
+package com.stormcode.everfood.FirstMain.zzz
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity

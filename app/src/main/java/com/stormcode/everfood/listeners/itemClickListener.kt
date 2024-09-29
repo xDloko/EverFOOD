@@ -1,4 +1,4 @@
-package com.stormcode.everfood.FirstMain
+package com.stormcode.everfood.listeners
 
 interface OnItemClickListener {
     fun onPriceChange(priceDifference: Float)

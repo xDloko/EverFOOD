@@ -1,4 +1,4 @@
-package com.stormcode.everfood.FirstMain
+package com.stormcode.everfood.FirstMain.activitys
 
 import android.content.Intent
 import android.content.res.Configuration
@@ -8,17 +8,12 @@ import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
-import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.drawerlayout.widget.DrawerLayout
-import androidx.navigation.Navigation
 import com.google.android.material.navigation.NavigationView
+import com.stormcode.everfood.FirstMain.FirstAppActivity
 import com.stormcode.everfood.R
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -92,7 +87,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         when (item.itemId){
             R.id.nav_item_one -> Toast.makeText(this, "perfil", Toast.LENGTH_SHORT).show()
             R.id.nav_item_two -> Toast.makeText(this, "carrito", Toast.LENGTH_SHORT).show()
-            R.id.nav_item_three -> Toast.makeText(this, "que mas", Toast.LENGTH_SHORT).show()
+            R.id.nav_item_three -> Toast.makeText(this, "Contactanos", Toast.LENGTH_SHORT).show()
         }
 
         drawer.closeDrawer(GravityCompat.START)

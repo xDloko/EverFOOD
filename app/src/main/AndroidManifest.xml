@@ -20,12 +20,12 @@
             android:label="LogIn-EverFOOD"
             android:theme="@style/Theme.EverFOOD" />
         <activity
-            android:name=".FirstMain.RegisterActivity"
+            android:name=".FirstMain.activitys.RegisterActivity"
             android:exported="true"
             android:label="Register-EverFOOD"
             android:theme="@style/Theme.EverFOOD" />
         <activity
-            android:name=".FirstMain.MainActivity"
+            android:name=".FirstMain.activitys.MainActivity"
             android:exported="true"
             android:label="Ever Food"
             android:theme="@style/Theme.EverFOOD">

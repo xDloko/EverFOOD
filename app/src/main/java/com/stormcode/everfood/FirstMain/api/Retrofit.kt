@@ -1,4 +1,4 @@
-package com.stormcode.everfood.FirstMain
+package com.stormcode.everfood.FirstMain.api
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -17,4 +17,6 @@ object RetrofitClient {
     val authService: AuthService by lazy {
         retrofit.create(AuthService::class.java)
     }
+
+
 }

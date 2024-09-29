@@ -1,11 +1,12 @@
-package com.stormcode.everfood
+package com.stormcode.everfood.FirstMain.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.stormcode.everfood.FirstMain.OnItemClickListener
+import com.stormcode.everfood.listeners.OnItemClickListener
+import com.stormcode.everfood.R
 
 data class Comida(
     val nombre: String,
