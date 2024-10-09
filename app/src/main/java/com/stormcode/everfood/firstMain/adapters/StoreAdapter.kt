@@ -1,10 +1,10 @@
-package com.stormcode.everfood.FirstMain.adapters
+package com.stormcode.everfood.firstMain.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.stormcode.everfood.FirstMain.Store
+import com.stormcode.everfood.firstMain.Store
 import com.stormcode.everfood.R
 
 
@@ -27,9 +27,9 @@ class StoresAdapter(private val storesList: MutableList<Store>) : RecyclerView.A
     // Enlaza los datos de la tienda con las vistas
     override fun onBindViewHolder(holder: StoreViewHolder, position: Int) {
         val store = storesList[position]
-        holder.storeName.text = store.tienda
+        holder.storeName.text = store.name
         holder.storeLocation.text = store.direccion
-        holder.storeRating.text = store.dueño
+        holder.storeRating.text = store.rating
     }
 
     // Devuelve el número de tiendas en la lista

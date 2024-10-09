@@ -1,4 +1,4 @@
-package com.stormcode.everfood.FirstMain.adapters
+package com.stormcode.everfood.firstMain.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup

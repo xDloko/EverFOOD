@@ -14,8 +14,8 @@ import android.widget.TextView
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.stormcode.everfood.FirstMain.adapters.Comida
-import com.stormcode.everfood.FirstMain.adapters.ComidaAdapter
+import com.stormcode.everfood.firstMain.adapters.Comida
+import com.stormcode.everfood.firstMain.adapters.ComidaAdapter
 import com.stormcode.everfood.listeners.OnItemClickListener
 
 private const val ARG_PARAM1 = "param1"

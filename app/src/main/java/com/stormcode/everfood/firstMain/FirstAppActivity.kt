@@ -1,4 +1,4 @@
-package com.stormcode.everfood.FirstMain
+package com.stormcode.everfood.firstMain
 
 import android.annotation.SuppressLint
 import android.app.Dialog
@@ -11,11 +11,11 @@ import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.stormcode.everfood.FirstMain.activitys.MainActivity
-import com.stormcode.everfood.FirstMain.activitys.RegisterActivity
-import com.stormcode.everfood.FirstMain.api.LoginRequest
-import com.stormcode.everfood.FirstMain.api.LoginResponse
-import com.stormcode.everfood.FirstMain.api.RetrofitClient
+import com.stormcode.everfood.firstMain.activitys.MainActivity
+import com.stormcode.everfood.firstMain.activitys.RegisterActivity
+import com.stormcode.everfood.firstMain.api.LoginRequest
+import com.stormcode.everfood.firstMain.api.LoginResponse
+import com.stormcode.everfood.firstMain.api.RetrofitClient
 import com.stormcode.everfood.R
 import retrofit2.Call
 import retrofit2.Callback
@@ -55,13 +55,15 @@ class FirstAppActivity : AppCompatActivity() {
                             val loginResponse = response.body()
                             val intent = Intent(this@FirstAppActivity, MainActivity::class.java)
                             loadingDialog.dismiss()
+                            val cookies = response.headers().values("token")
                             editor.putBoolean("isLoggedIn", true)
-                            //editor.putString("username", loginResponse?.username)
+                            editor.putString("username", loginResponse?.username)
                             editor.putString("email", loginResponse?.email)
+                            editor.putString("token", cookies[0])
                             editor.apply()
                             startActivity(intent)
                             finish()
-                            Toast.makeText(this@FirstAppActivity, "Bienvenido ${loginResponse?.email}", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this@FirstAppActivity, "Bienvenido ${loginResponse?.username}", Toast.LENGTH_SHORT).show()
                         } else {
                             loadingDialog.dismiss()
                             Toast.makeText(this@FirstAppActivity, "Credenciales incorrectas", Toast.LENGTH_SHORT).show()

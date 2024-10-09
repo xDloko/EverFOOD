@@ -1,10 +1,10 @@
-package com.stormcode.everfood.FirstMain.api
+package com.stormcode.everfood.firstMain.api
 
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.POST
 import retrofit2.http.GET
-import com.stormcode.everfood.FirstMain.Store
+import com.stormcode.everfood.firstMain.Store
 import retrofit2.http.Query
 
 data class LoginRequest(val email: String, val password: String)
@@ -17,12 +17,12 @@ data class RegisterResponse(val id: String, val username: String, val email: Str
 
 interface AuthService {
 
-    @POST("api/login")
+    @POST("api/user/login")
     fun login(@Body request: LoginRequest): Call<LoginResponse>
 
-    @POST("api/register")
+    @POST("api/user/register")
     fun register(@Body request: RegisterRequest): Call<RegisterResponse>
 
-    @GET("api/store/tienda-all")
+    @GET("api/store/admin-vertiendas")
     suspend fun getStores(@Query("limit") limit: Int, @Query("offset") offset: Int): List<Store>
 }

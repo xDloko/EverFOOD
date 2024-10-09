@@ -1,4 +1,4 @@
-package com.stormcode.everfood.FirstMain.activitys
+package com.stormcode.everfood.firstMain.activitys
 
 import android.content.Intent
 import android.content.res.Configuration
@@ -13,7 +13,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
-import com.stormcode.everfood.FirstMain.FirstAppActivity
+import com.stormcode.everfood.firstMain.FirstAppActivity
 import com.stormcode.everfood.R
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {

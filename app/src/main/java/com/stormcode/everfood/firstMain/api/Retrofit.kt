@@ -1,4 +1,4 @@
-package com.stormcode.everfood.FirstMain.api
+package com.stormcode.everfood.firstMain.api
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

@@ -15,17 +15,17 @@
         android:theme="@style/Theme.EverFOOD"
         tools:targetApi="31">
         <activity
-            android:name=".FirstMain.FirstAppActivity"
+            android:name=".firstMain.FirstAppActivity"
             android:exported="true"
             android:label="LogIn-EverFOOD"
             android:theme="@style/Theme.EverFOOD" />
         <activity
-            android:name=".FirstMain.activitys.RegisterActivity"
+            android:name=".firstMain.activitys.RegisterActivity"
             android:exported="true"
             android:label="Register-EverFOOD"
             android:theme="@style/Theme.EverFOOD" />
         <activity
-            android:name=".FirstMain.activitys.MainActivity"
+            android:name=".firstMain.activitys.MainActivity"
             android:exported="true"
             android:label="Ever Food"
             android:theme="@style/Theme.EverFOOD">

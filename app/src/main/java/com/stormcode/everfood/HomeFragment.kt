@@ -13,8 +13,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.stormcode.everfood.FirstMain.Store
-import com.stormcode.everfood.FirstMain.StoreViewModel
+import com.stormcode.everfood.firstMain.StoreViewModel
 
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"

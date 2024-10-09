@@ -1,11 +1,11 @@
-package com.stormcode.everfood.FirstMain
+package com.stormcode.everfood.firstMain
 
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.stormcode.everfood.FirstMain.adapters.StoresAdapter
-import com.stormcode.everfood.FirstMain.api.RetrofitClient
+import com.stormcode.everfood.firstMain.adapters.StoresAdapter
+import com.stormcode.everfood.firstMain.api.RetrofitClient
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
 
