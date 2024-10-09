@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".FirstMain.FirstAppActivity"
+    tools:context=".firstMain.FirstAppActivity"
     android:background="@android:color/transparent"
     >
     <com.google.android.material.appbar.AppBarLayout
@@ -15,6 +15,8 @@
         >
 
         <androidx.appcompat.widget.Toolbar
+            style="@style/CustomTollBarStyle"
+            android:padding="10dp"
             android:id="@+id/toolbar_main"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"

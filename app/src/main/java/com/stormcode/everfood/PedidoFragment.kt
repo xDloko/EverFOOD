@@ -1,29 +1,32 @@
 package com.stormcode.everfood
 
-import android.content.Context
 import android.graphics.Rect
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.inputmethod.InputMethodManager
 import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.LinearLayout
-import android.widget.Toast
+import android.widget.TextView
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.stormcode.everfood.firstMain.adapters.Comida
+import com.stormcode.everfood.firstMain.adapters.ComidaAdapter
+import com.stormcode.everfood.listeners.OnItemClickListener
 
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
-class PedidoFragment : Fragment() {
+class PedidoFragment : Fragment(), OnItemClickListener {
 
     private var param1: String? = null
     private var param2: String? = null
+    private var total = 0.00
+    private lateinit var tvTotal: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,6 +42,14 @@ class PedidoFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_pedido, container, false)
 
+        val recyclerView: RecyclerView = view.findViewById(R.id.recyclerViewComidas)
+        recyclerView.layoutManager = LinearLayoutManager(requireContext())
+
+        tvTotal = view.findViewById(R.id.tvTotal)
+
+        val comidaAdapter = ComidaAdapter(getComidaList(), this)
+        recyclerView.adapter = comidaAdapter
+
         val backbutton: ImageButton = view.findViewById(R.id.back_button)
 
         backbutton.setOnClickListener {
@@ -47,28 +58,7 @@ class PedidoFragment : Fragment() {
 
 
 
-        val recyclerView: RecyclerView = view.findViewById(R.id.recyclerViewComidas)
-
-        val listaComidas = listOf(
-            Comida("Pizza", 12.99),
-            Comida("Hamburguesa", 8.99),
-            Comida("Ensalada", 6.50),
-            Comida("suchi", 12.99),
-            Comida("tamarindo", 8.99),
-            Comida("pan", 6.50),
-            Comida("awebo", 12.99),
-            Comida("huevos revueltos", 8.99),
-            Comida("carne bistec a la plancha", 6.50),
-            Comida("hamburguesa de queso fino", 12.99),
-            Comida("chingaste", 8.99),
-            Comida("cocacola light", 6.50),
-            Comida("premio", 12.99),
-            Comida("quatro", 8.99),
-            Comida("Gey el que lo lea", 6.50)
-        )
-
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        recyclerView.adapter = ComidaAdapter(listaComidas)
 
         val checkBox1: CheckBox = view.findViewById(R.id.checkBoxDomicilio)
         val checkBox2: CheckBox = view.findViewById(R.id.checkBoxRecolecion)
@@ -141,6 +131,33 @@ class PedidoFragment : Fragment() {
 
 
         return view
+    }
+
+
+    override fun onPriceChange(priceDifference: Float) {
+        total += priceDifference
+        tvTotal.text = "$ $total"
+    }
+
+    // Simula una lista de comidas
+    private fun getComidaList(): List<Comida> {
+        return listOf(
+            Comida("Pizza", 12.99f),
+            Comida("Hamburguesa", 8.99f),
+            Comida("Ensalada", 6.50f),
+            Comida("suchi", 12.99f),
+            Comida("tamarindo", 8.99f),
+            Comida("pan", 6.50f),
+            Comida("awebo", 12.99f),
+            Comida("huevos revueltos", 8.99f),
+            Comida("carne bistec a la plancha", 6.50f),
+            Comida("hamburguesa de queso fino", 12.99f),
+            Comida("chingaste", 8.99f),
+            Comida("cocacola light", 6.50f),
+            Comida("premio", 12.99f),
+            Comida("quatro", 8.99f),
+            Comida("Gey el que lo lea", 6.50f)
+        )
     }
 
 

@@ -1,4 +1,4 @@
-package com.stormcode.everfood.FirstMain
+package com.stormcode.everfood.firstMain.zzz
 
 import android.content.Context
 import com.google.gson.Gson
