@@ -8,26 +8,19 @@
     android:orientation="vertical"
     android:gravity="center"
     android:padding="16dp"
-    android:background="@drawable/background_general"
-
-    >
-
+    android:background="@drawable/background_general">
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/navHomeFragment"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:navGraph="@navigation/home_graph"
-        >
-
-    </androidx.fragment.app.FragmentContainerView>
+        app:navGraph="@navigation/home_graph" />
 
     <include
         layout="@layout/app_bar_main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
-
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav_view"
@@ -38,29 +31,34 @@
         app:menu="@menu/activity_main_drawer" />
 
 
-
-
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewMenus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:padding="16dp"
+        android:visibility="gone" />
 
 </androidx.drawerlayout.widget.DrawerLayout>
 
-<!-- <ImageButton
-            android:id="@+id/user_button"
-            android:tooltipText="Usuario"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:src="@drawable/user_account_circle"
-            android:contentDescription="Perfil"
-            android:background="@drawable/transparentbackground"
-            android:padding="15sp"
-             />
-       <ImageButton
-            android:id="@+id/menu_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:contentDescription="Menu"
-            android:padding="15sp"
-            android:src="@drawable/main_menu"
-            android:tooltipText="Menu"
-            tools:ignore="TouchTargetSizeCheck" />
-         -->
+    <!-- <ImageButton
+                android:id="@+id/user_button"
+                android:tooltipText="Usuario"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@drawable/user_account_circle"
+                android:contentDescription="Perfil"
+                android:background="@drawable/transparentbackground"
+                android:padding="15sp"
+                 />
+           <ImageButton
+                android:id="@+id/menu_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:contentDescription="Menu"
+                android:padding="15sp"
+                android:src="@drawable/main_menu"
+                android:tooltipText="Menu"
+                tools:ignore="TouchTargetSizeCheck" />
+             -->

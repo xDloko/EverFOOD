@@ -8,28 +8,24 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.EditText
+import android.widget.ImageButton
 import android.widget.ImageView
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.stormcode.everfood.firstMain.Menu
-import com.stormcode.everfood.firstMain.StoreViewModel
+import com.stormcode.everfood.firstMain.MenuViewModel
 
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+class MenuFragment : Fragment() {
 
-class HomeFragment : Fragment() {
-
-    private lateinit var viewModel: StoreViewModel
-    private var param1: String? = null
-    private var param2: String? = null
+    private lateinit var viewModel: MenuViewModel
+    private var storeId: Int? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+            storeId = it.getInt("tienda_id")
         }
     }
 
@@ -38,14 +34,11 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val root = inflater.inflate(R.layout.fragment_home, container, false)
+        val root = inflater.inflate(R.layout.fragment_menu, container, false)
 
-        viewModel = ViewModelProvider(this).get(StoreViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(MenuViewModel::class.java)
 
-        val btnNavigate: Button = root.findViewById(R.id.pedido_button)
-        btnNavigate.setOnClickListener {
-            findNavController().navigate(R.id.action_homeFragment_to_pedidoFragment)
-        }
+
 
         val logoStore: ImageView = root.findViewById(R.id.logo_store)
 
@@ -57,26 +50,21 @@ class HomeFragment : Fragment() {
 
             if (keypadHeight > screenHeight * 0.15) {
                 logoStore.visibility = View.GONE
-                btnNavigate.visibility = View.GONE
+
             } else {
                 logoStore.visibility = View.VISIBLE
-                btnNavigate.visibility = View.VISIBLE
+
             }
         }
 
-        val recyclerViewComidas: RecyclerView = root.findViewById(R.id.recyclerViewComidas)
+        val recyclerViewMenus: RecyclerView = root.findViewById(R.id.recyclerViewMenus)
+        recyclerViewMenus.layoutManager = LinearLayoutManager(context)
+        recyclerViewMenus.adapter = viewModel.MenuAdapter
 
+        // Cargar el menú con el ID de la tienda
+        storeId?.let { viewModel.loadMenu(it, 0) }
 
-
-
-
-
-        recyclerViewComidas.layoutManager = LinearLayoutManager(context)
-        recyclerViewComidas.adapter = viewModel.storesAdapter
-
-        viewModel.loadStores(50, 0)
-
-        recyclerViewComidas.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+        recyclerViewMenus.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
 
@@ -86,7 +74,7 @@ class HomeFragment : Fragment() {
                 val pastVisibleItems = layoutManager.findFirstVisibleItemPosition()
 
                 if (pastVisibleItems + visibleItemCount >= totalItemCount) {
-                    loadMoreStores()
+                    loadMoreMenus()
                 }
             }
         })
@@ -94,27 +82,25 @@ class HomeFragment : Fragment() {
         return root
     }
 
-
     private var isLoading = false
     private var offset = 0
     private val limit = 50
 
-    private fun loadMoreStores() {
+    private fun loadMoreMenus() {
         if (!isLoading) {
             isLoading = true
             offset += limit
-            viewModel.loadStores(limit, offset)
+            storeId?.let { viewModel.loadMenu(it, offset) }
             isLoading = false
         }
     }
 
     companion object {
         @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            HomeFragment().apply {
+        fun newInstance(idStore: Int) =
+            MenuFragment().apply {
                 arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+                    putInt("tienda_id", idStore)
                 }
             }
     }
