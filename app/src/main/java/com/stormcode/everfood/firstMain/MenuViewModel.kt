@@ -6,18 +6,19 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.stormcode.everfood.firstMain.adapters.MenuAdapter
 import com.stormcode.everfood.firstMain.api.RetrofitClient
+import com.stormcode.everfood.firstMain.api.TiendaIdRequest
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
 
 class MenuViewModel : ViewModel() {
 
-    val menusList = mutableListOf<Menu>()
+    private val menusList = mutableListOf<Menu>()
     val MenuAdapter = MenuAdapter(menusList)
 
-    fun loadMenu(limit: Int, offset: Int) {
+    fun loadMenu(tiendaId: String) {
         viewModelScope.launch {
             try {
-                val newMenus = RetrofitClient.authService.getMenus(limit, offset)
+                val newMenus = RetrofitClient.authService.getMenus(TiendaIdRequest(tienda_id = tiendaId))
                 menusList.addAll(newMenus)
                 MenuAdapter.notifyDataSetChanged()
             } catch (e: HttpException) {

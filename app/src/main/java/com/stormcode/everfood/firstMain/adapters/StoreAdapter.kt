@@ -20,20 +20,20 @@ class StoresAdapter(private val storesList: MutableList<Store>) : RecyclerView.A
         val storeRating: TextView = view.findViewById(R.id.storeRating)
     }
 
-    // Infla el layout item_store.xml para cada tienda
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StoreViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_tienda, parent, false)
         return StoreViewHolder(view)
     }
 
-    // Enlaza los datos de la tienda con las vistas
+
     override fun onBindViewHolder(holder: StoreViewHolder, position: Int) {
         val store = storesList[position]
         holder.storeName.text = store.name
         holder.storeLocation.text = store.direccion
         holder.storeRating.text = store.rating
         holder.menubtn.setOnClickListener {
-            val fragment = MenuFragment.newInstance(store.idStore)
+            val fragment = MenuFragment.newInstance(store._id)
             val fragmentManager = (holder.itemView.context as FragmentActivity).supportFragmentManager
             fragmentManager.beginTransaction()
                 .replace(R.id.navHomeFragment, fragment)
@@ -42,7 +42,7 @@ class StoresAdapter(private val storesList: MutableList<Store>) : RecyclerView.A
         }
     }
 
-    // Devuelve el número de tiendas en la lista
+
     override fun getItemCount(): Int {
         return storesList.size
     }

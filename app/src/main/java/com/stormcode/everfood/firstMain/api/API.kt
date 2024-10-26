@@ -15,6 +15,8 @@ data class LoginResponse(val id: String, val email: String, val username: String
 data class RegisterRequest(val email: String, val password: String, val username: String)
 data class RegisterResponse(val id: String, val username: String, val email: String)
 
+data class TiendaIdRequest(val tienda_id: String)
+
 
 
 interface AuthService {
@@ -28,8 +30,9 @@ interface AuthService {
     @GET("api/system/system-stores")
     suspend fun getStores(@Query("limit") limit: Int, @Query("offset") offset: Int): List<Store>
 
-    @GET("api/system/system-menus")
-    suspend fun getMenus(@Query("limit") limit: Int, @Query("offset") offset: Int): List<Menu>
+    @POST("api/store/tienda-vermenu")
+    suspend fun getMenus(@Body storeId: TiendaIdRequest): List<Menu>
 
 
 }
+

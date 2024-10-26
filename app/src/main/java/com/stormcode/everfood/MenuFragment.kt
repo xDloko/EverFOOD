@@ -20,12 +20,12 @@ import com.stormcode.everfood.firstMain.MenuViewModel
 class MenuFragment : Fragment() {
 
     private lateinit var viewModel: MenuViewModel
-    private var storeId: Int? = null
+    private var storeId: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            storeId = it.getInt("tienda_id")
+            storeId = it.getString("tienda_id")
         }
     }
 
@@ -61,46 +61,19 @@ class MenuFragment : Fragment() {
         recyclerViewMenus.layoutManager = LinearLayoutManager(context)
         recyclerViewMenus.adapter = viewModel.MenuAdapter
 
-        // Cargar el menú con el ID de la tienda
-        storeId?.let { viewModel.loadMenu(it, 0) }
 
-        recyclerViewMenus.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                super.onScrolled(recyclerView, dx, dy)
-
-                val layoutManager = recyclerView.layoutManager as LinearLayoutManager
-                val visibleItemCount = layoutManager.childCount
-                val totalItemCount = layoutManager.itemCount
-                val pastVisibleItems = layoutManager.findFirstVisibleItemPosition()
-
-                if (pastVisibleItems + visibleItemCount >= totalItemCount) {
-                    loadMoreMenus()
-                }
-            }
-        })
+        storeId?.let { viewModel.loadMenu(storeId!!) }
 
         return root
     }
 
-    private var isLoading = false
-    private var offset = 0
-    private val limit = 50
-
-    private fun loadMoreMenus() {
-        if (!isLoading) {
-            isLoading = true
-            offset += limit
-            storeId?.let { viewModel.loadMenu(it, offset) }
-            isLoading = false
-        }
-    }
 
     companion object {
         @JvmStatic
-        fun newInstance(idStore: Int) =
+        fun newInstance(idStore: String) =
             MenuFragment().apply {
                 arguments = Bundle().apply {
-                    putInt("tienda_id", idStore)
+                    putString("tienda_id", idStore)
                 }
             }
     }

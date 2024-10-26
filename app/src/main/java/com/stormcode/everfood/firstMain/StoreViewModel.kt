@@ -11,7 +11,7 @@ import retrofit2.HttpException
 
 class StoreViewModel : ViewModel() {
 
-    val storesList = mutableListOf<Store>()
+    private val storesList = mutableListOf<Store>()
     val storesAdapter = StoresAdapter(storesList)
 
     fun loadStores(limit: Int, offset: Int) {
@@ -21,10 +21,8 @@ class StoreViewModel : ViewModel() {
                 storesList.addAll(newStores)
                 storesAdapter.notifyDataSetChanged()
             } catch (e: HttpException) {
-                // Manejar errores HTTP
                 Log.e("API Error", "Error: ${e.code()}, ${e.message()}")
             } catch (e: Exception) {
-                // Manejar errores generales
                 Log.e("API Failure", e.message ?: "Error desconocido")
             }
         }

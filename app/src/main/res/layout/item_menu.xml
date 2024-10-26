@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:textSize="18sp"
         android:textStyle="bold"
-        android:text="Nombre de la Tienda" />
+        android:text="Nombre de el Menu" />
 
     <TextView
         android:id="@+id/menuT"
@@ -28,12 +28,7 @@
         android:textSize="14sp"
         android:text="Ubicación" />
 
-    <TextView
-        android:id="@+id/storeRating"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="14sp"
-        android:text="Rating" />
+
 
     </LinearLayout>
 
