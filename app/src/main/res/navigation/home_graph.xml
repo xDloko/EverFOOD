@@ -15,6 +15,9 @@
             app:destination="@id/pedidoFragment"
             app:enterAnim="@android:anim/fade_in"
             app:exitAnim="@android:anim/fade_out" />
+        <action
+            android:id="@+id/action_homeFragment_to_menuFragment"
+            app:destination="@id/menuFragment" />
     </fragment>
     <fragment
         android:id="@+id/pedidoFragment"
@@ -37,4 +40,11 @@
             android:id="@+id/action_factureFragment_self"
             app:destination="@id/factureFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/menuFragment"
+        android:name="com.stormcode.everfood.MenuFragment"
+        android:label="fragment_menu"
+        tools:layout="@layout/fragment_menu" />
+
+
 </navigation>

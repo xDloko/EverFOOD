@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".HomeFragment">
+
+
+
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_marginTop="20dp"
+        android:layout_height="180dp"
+        android:contentDescription="Stores"
+        android:src="@drawable/everfoodlogomoderno"
+        android:id="@+id/logo_store"
+
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:layout_marginTop="55dp"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+            <EditText
+                android:layout_width="310dp"
+                android:layout_height="wrap_content"
+                android:hint="Buscar"
+                android:textColor="@color/black"
+                android:textColorHint="#5D5D5D"
+                android:textSize="18sp"
+                android:padding="12dp"
+                android:layout_marginVertical="10dp"
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/rounded_corner"/>
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_corner"
+                android:contentDescription="@string/back"
+                android:minHeight="49dp"
+                android:paddingVertical="5dp"
+                android:paddingHorizontal="12dp"
+                android:layout_margin="10dp"
+                app:srcCompat="@drawable/search_icon" />
+
+
+        </LinearLayout>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewMenus"
+            android:layout_width="match_parent"
+            android:layout_height="420dp"
+            android:scrollbars="vertical"
+            android:padding="14dp"
+
+            />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_marginBottom="20dp"
+
+        >
+
+        <Button
+            android:id="@+id/pedido_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center"
+            android:background="@drawable/rounded_corner_black"
+            android:minHeight="50dp"
+            android:textSize="14sp"
+            android:paddingHorizontal="8dp"
+            android:text="Hacer Pedido"
+
+            />
+
+    </LinearLayout>
+
+
+
+</FrameLayout>
