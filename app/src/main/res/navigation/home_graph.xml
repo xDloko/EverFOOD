@@ -44,7 +44,16 @@
         android:id="@+id/menuFragment"
         android:name="com.stormcode.everfood.MenuFragment"
         android:label="fragment_menu"
-        tools:layout="@layout/fragment_menu" />
+        tools:layout="@layout/fragment_menu" >
+        <action
+            android:id="@+id/action_menuFragment_to_productosFragment"
+            app:destination="@id/productosFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/productosFragment"
+        android:name="com.stormcode.everfood.ProductosFragment"
+        android:label="fragment_productos"
+        tools:layout="@layout/fragment_productos" />
 
 
 </navigation>
