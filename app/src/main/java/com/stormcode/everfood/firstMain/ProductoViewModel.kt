@@ -15,17 +15,17 @@ class ProductoViewModel : ViewModel() {
     private val productosList = mutableListOf<Producto>()
     val ProductAdapter = ProductAdapter(productosList)
 
-    fun loadProducto(cartaId: String) {
+    fun loadProducto(menuId: String) {
         viewModelScope.launch {
             try {
-                val newProductos = RetrofitClient.authService.getProductos(ProductoIdRequest(carta_id = cartaId))
+                val newProductos = RetrofitClient.authService.getProductos(ProductoIdRequest(menu_id = menuId))
                 productosList.addAll(newProductos)
                 ProductAdapter.notifyDataSetChanged()
             } catch (e: HttpException) {
-                // Manejar errores HTTP
+
                 Log.e("API Error", "Error: ${e.code()}, ${e.message()}")
             } catch (e: Exception) {
-                // Manejar errores generales
+
                 Log.e("API Failure", e.message ?: "Error desconocido")
             }
         }

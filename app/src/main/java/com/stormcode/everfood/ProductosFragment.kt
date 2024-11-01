@@ -20,12 +20,12 @@ import com.stormcode.everfood.firstMain.ProductoViewModel
 class ProductosFragment : Fragment() {
 
     private lateinit var viewModel: ProductoViewModel
-    private var cartaId: String? = null
+    private var menuId: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            cartaId = it.getString("carta_id")
+            menuId = it.getString("menu_id")
         }
     }
 
@@ -62,7 +62,7 @@ class ProductosFragment : Fragment() {
         recyclerViewProductos.adapter = viewModel.ProductAdapter
 
 
-        cartaId?.let { viewModel.loadProducto(cartaId!!) }
+        menuId?.let { viewModel.loadProducto(menuId!!) }
 
         return root
     }
@@ -70,10 +70,10 @@ class ProductosFragment : Fragment() {
 
     companion object {
         @JvmStatic
-        fun newInstance(idCarta: String) =
+        fun newInstance(menuId: String) =
             ProductosFragment().apply {
                 arguments = Bundle().apply {
-                    putString("carta_id", idCarta)
+                    putString("menu_id", menuId)
                 }
             }
     }

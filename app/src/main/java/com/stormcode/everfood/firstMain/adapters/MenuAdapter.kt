@@ -28,7 +28,7 @@ class MenuAdapter(private val menusList: MutableList<Menu>) : RecyclerView.Adapt
         val menu = menusList[position]
         holder.menuName.text = menu.name
         holder.productobtn.setOnClickListener {
-            val fragment = ProductosFragment.newInstance(menu.tienda_id)
+            val fragment = ProductosFragment.newInstance(menu._id)
             val fragmentManager = (holder.itemView.context as FragmentActivity).supportFragmentManager
             fragmentManager.beginTransaction()
                 .replace(R.id.navHomeFragment, fragment)

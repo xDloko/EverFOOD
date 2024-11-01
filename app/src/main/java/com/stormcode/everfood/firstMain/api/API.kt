@@ -18,7 +18,7 @@ data class RegisterResponse(val id: String, val username: String, val email: Str
 
 data class TiendaIdRequest(val tienda_id: String)
 
-data class ProductoIdRequest(val carta_id: String)
+data class ProductoIdRequest(val menu_id: String)
 
 
 
@@ -37,7 +37,7 @@ interface AuthService {
     suspend fun getMenus(@Body storeId: TiendaIdRequest): List<Menu>
 
     @POST("api/store/tienda-verproductos")
-    suspend fun getProductos(@Body cartaId: ProductoIdRequest): List<Producto>
+    suspend fun getProductos(@Body menuId: ProductoIdRequest): List<Producto>
 
 
 }
