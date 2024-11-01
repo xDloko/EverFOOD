@@ -1,0 +1,95 @@
+<!-- res/layout/item_store.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="16dp">
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="400dp"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="168dp"
+            android:src="@drawable/everfoodlogomoderno" />
+
+        <TextView
+            android:id="@+id/productoName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nombre de la Comida"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/descripcionProduct"
+            android:layout_width="match_parent"
+            android:layout_height="76dp"
+            android:text="Descripcion"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/precioProduct"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Valor:"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginLeft="10dp">
+
+            <TextView
+                android:id="@+id/tvContadorString"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cantidad:"
+                android:layout_marginLeft="5dp"
+                android:textSize="16sp"
+                android:padding="8dp" />
+
+            <!-- TextView para mostrar el contador -->
+            <TextView
+                android:id="@+id/tvContador"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:layout_marginLeft="5dp"
+                android:textSize="16sp"
+                android:padding="8dp" />
+
+            <!-- Botón para aumentar -->
+            <Button
+                android:id="@+id/btnIncrease"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:textSize="14sp"
+                android:padding="0dp"
+                android:background="@drawable/rounded_corner"
+                android:text="▲" />
+
+            <!-- Botón para disminuir -->
+            <Button
+                android:id="@+id/btnDecrease"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:textSize="14sp"
+                android:padding="0dp"
+                android:background="@drawable/rounded_corner"
+                android:text="▼" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</LinearLayout>
