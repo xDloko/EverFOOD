@@ -58,6 +58,13 @@
             android:layout_weight="1"
             android:padding="54dp"
             android:scrollbars="vertical" />
+
+        <Button
+            android:id="@+id/carritoButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ver Carrito" />
+
     </LinearLayout>
 
     <LinearLayout
@@ -67,5 +74,7 @@
         android:gravity="center"
         android:orientation="horizontal"
         android:layout_marginBottom="20dp" />
+
+
 
 </FrameLayout>

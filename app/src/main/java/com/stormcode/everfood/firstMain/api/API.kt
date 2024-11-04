@@ -7,7 +7,9 @@ import retrofit2.http.POST
 import retrofit2.http.GET
 import com.stormcode.everfood.firstMain.Store
 import com.stormcode.everfood.firstMain.Menu
+import com.stormcode.everfood.firstMain.PedidoRequest
 import com.stormcode.everfood.firstMain.Producto
+import retrofit2.Response
 import retrofit2.http.Query
 
 data class LoginRequest(val email: String, val password: String)
@@ -38,6 +40,9 @@ interface AuthService {
 
     @POST("api/store/tienda-verproductos")
     suspend fun getProductos(@Body menuId: ProductoIdRequest): List<Producto>
+
+    @POST("api/user/crear-pedido")
+    suspend fun enviarPedido(@Body pedido: PedidoRequest): Response<Void>
 
 
 }

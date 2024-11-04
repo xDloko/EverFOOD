@@ -1,11 +1,14 @@
 package com.stormcode.everfood.firstMain.adapters
 
+import android.os.Bundle
+import android.provider.Settings.Global.putString
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.FragmentActivity
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.stormcode.everfood.MenuFragment
 import com.stormcode.everfood.firstMain.Store
@@ -33,12 +36,10 @@ class StoresAdapter(private val storesList: MutableList<Store>) : RecyclerView.A
         holder.storeLocation.text = store.direccion
         holder.storeRating.text = store.rating
         holder.menubtn.setOnClickListener {
-            val fragment = MenuFragment.newInstance(store._id)
-            val fragmentManager = (holder.itemView.context as FragmentActivity).supportFragmentManager
-            fragmentManager.beginTransaction()
-                .replace(R.id.navHomeFragment, fragment)
-                .addToBackStack(null)
-                .commit()
+            val navController = (holder.itemView.context as FragmentActivity).findNavController(R.id.navHomeFragment)
+            navController.navigate(R.id.action_homeFragment_to_menuFragment, Bundle().apply {
+                putString("tienda_id", store._id)
+            })
         }
     }
 

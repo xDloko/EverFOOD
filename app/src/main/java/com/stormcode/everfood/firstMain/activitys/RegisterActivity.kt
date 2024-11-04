@@ -43,7 +43,7 @@ class RegisterActivity : AppCompatActivity() {
             loadingDialog.setContentView(R.layout.dialog)
             loadingDialog.setCancelable(false)
             loadingDialog.show()
-            val request = RegisterRequest(email, username, password)
+            val request = RegisterRequest(email, password, username)
 
             Handler(Looper.getMainLooper()).postDelayed({
                 RetrofitClient.authService.register(request)

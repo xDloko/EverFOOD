@@ -3,30 +3,39 @@ package com.stormcode.everfood
 import android.annotation.SuppressLint
 import android.graphics.Rect
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ImageButton
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.stormcode.everfood.firstMain.CarritoViewModel
 import com.stormcode.everfood.firstMain.ProductoViewModel
+import com.stormcode.everfood.firstMain.adapters.Carrito
+import com.stormcode.everfood.firstMain.adapters.CarritoItem
+import com.stormcode.everfood.firstMain.adapters.CarritoViewModelFactory
+import com.stormcode.everfood.firstMain.adapters.ProductAdapter
+import com.stormcode.everfood.firstMain.adapters.ProductoViewModelFactory
 
 class ProductosFragment : Fragment() {
 
+    private lateinit var carritoViewModel: CarritoViewModel
     private lateinit var viewModel: ProductoViewModel
     private var menuId: String? = null
+    private var storeId: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
             menuId = it.getString("menu_id")
+            storeId = it.getString("store_id")
         }
+
+        carritoViewModel = ViewModelProvider(requireActivity(), CarritoViewModelFactory(storeId!!)).get(CarritoViewModel::class.java)
     }
 
     @SuppressLint("MissingInflatedId")
@@ -36,45 +45,31 @@ class ProductosFragment : Fragment() {
     ): View? {
         val root = inflater.inflate(R.layout.fragment_productos, container, false)
 
-        viewModel = ViewModelProvider(this).get(ProductoViewModel::class.java)
-
-
-
-        val logoStore: ImageView = root.findViewById(R.id.logo_store)
-
-        root.viewTreeObserver.addOnGlobalLayoutListener {
-            val rect = Rect()
-            root.getWindowVisibleDisplayFrame(rect)
-            val screenHeight = root.rootView.height
-            val keypadHeight = screenHeight - rect.bottom
-
-            if (keypadHeight > screenHeight * 0.15) {
-                logoStore.visibility = View.GONE
-
-            } else {
-                logoStore.visibility = View.VISIBLE
-
-            }
-        }
+        val carrito = carritoViewModel.carrito
+        viewModel = ViewModelProvider(this, ProductoViewModelFactory(carrito)).get(ProductoViewModel::class.java)
 
         val recyclerViewProductos: RecyclerView = root.findViewById(R.id.recyclerViewProductos)
         recyclerViewProductos.layoutManager = LinearLayoutManager(context)
-        recyclerViewProductos.adapter = viewModel.ProductAdapter
+        recyclerViewProductos.adapter = viewModel.productAdapter
 
-
-        menuId?.let { viewModel.loadProducto(menuId!!) }
+        menuId?.let {
+            viewModel.loadProducto(it)
+        }
 
         return root
     }
 
-
     companion object {
         @JvmStatic
-        fun newInstance(menuId: String) =
+        fun newInstance(menuId: String, storeId: String) =
             ProductosFragment().apply {
                 arguments = Bundle().apply {
                     putString("menu_id", menuId)
+                    putString("store_id", storeId)
                 }
             }
     }
 }
+
+
+

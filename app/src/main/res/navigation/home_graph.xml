@@ -33,7 +33,7 @@
     </fragment>
     <fragment
         android:id="@+id/factureFragment"
-        android:name="com.stormcode.everfood.factureFragment"
+        android:name="com.stormcode.everfood.FactureFragment"
         android:label="fragment_facture"
         tools:layout="@layout/fragment_facture" >
         <action
@@ -48,12 +48,24 @@
         <action
             android:id="@+id/action_menuFragment_to_productosFragment"
             app:destination="@id/productosFragment" />
+        <action
+            android:id="@+id/action_menuFragment_to_carritofragment"
+            app:destination="@id/carritoFragment" />
     </fragment>
     <fragment
         android:id="@+id/productosFragment"
         android:name="com.stormcode.everfood.ProductosFragment"
         android:label="fragment_productos"
         tools:layout="@layout/fragment_productos" />
+    <fragment
+        android:id="@+id/carritoFragment"
+        android:name="com.stormcode.everfood.CarritoFragment"
+        android:label="fragment_carritofragment"
+        tools:layout="@layout/fragment_carritofragment" >
+        <action
+            android:id="@+id/action_carritofragment_to_menuFragment"
+            app:destination="@id/menuFragment" />
+    </fragment>
 
 
 </navigation>
