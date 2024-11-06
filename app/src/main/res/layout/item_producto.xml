@@ -13,9 +13,11 @@
         android:orientation="vertical">
 
         <ImageView
+            android:id="@+id/producto_imagen"
             android:layout_width="match_parent"
             android:layout_height="168dp"
-            android:src="@drawable/everfoodlogomoderno" />
+            android:scaleType="centerCrop"
+            android:src="@drawable/youtlogo" />
 
         <TextView
             android:id="@+id/productoName"

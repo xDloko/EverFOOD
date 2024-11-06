@@ -49,7 +49,7 @@ class ProductosFragment : Fragment() {
         viewModel = ViewModelProvider(this, ProductoViewModelFactory(carrito)).get(ProductoViewModel::class.java)
 
         val recyclerViewProductos: RecyclerView = root.findViewById(R.id.recyclerViewProductos)
-        recyclerViewProductos.layoutManager = LinearLayoutManager(context)
+        recyclerViewProductos.layoutManager = LinearLayoutManager(requireContext())
         recyclerViewProductos.adapter = viewModel.productAdapter
 
         menuId?.let {

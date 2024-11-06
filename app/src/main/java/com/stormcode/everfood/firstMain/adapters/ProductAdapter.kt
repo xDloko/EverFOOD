@@ -1,18 +1,22 @@
 package com.stormcode.everfood.firstMain.adapters
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.stormcode.everfood.firstMain.Producto
 import com.stormcode.everfood.R
+import com.bumptech.glide.Glide
+
 
 class ProductAdapter(
     private val carrito: Carrito,
     private val productosList: MutableList<Producto>,
-    private val onAddToCart: (Producto, Int) -> Unit // Callback para agregar al carrito
+    private val onAddToCart: (Producto, Int) -> Unit
 ) : RecyclerView.Adapter<ProductAdapter.ProductoViewHolder>() {
 
     class ProductoViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -22,6 +26,7 @@ class ProductAdapter(
         val tvContador: TextView = view.findViewById(R.id.tvContador)
         val btnIncrease: Button = view.findViewById(R.id.btnIncrease)
         val btnDecrease: Button = view.findViewById(R.id.btnDecrease)
+        val productoImagen: ImageView = view.findViewById(R.id.producto_imagen)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductoViewHolder {
@@ -34,6 +39,15 @@ class ProductAdapter(
         holder.productoName.text = producto.name
         holder.productoDescrt.text = producto.descripcion
         holder.precioProduct.text = producto.precio
+        Log.d("Image URL", "URL de imagen: ${producto.image}")
+
+        holder.itemView.context?.let { context ->
+            Glide.with(context)
+                .load(producto.image)
+                .placeholder(R.drawable.placeholder)
+                .error(R.drawable.error)
+                .into(holder.productoImagen)
+        }
 
         var cantidad = 1
         holder.tvContador.text = cantidad.toString()

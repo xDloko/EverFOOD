@@ -51,6 +51,8 @@ android {
 }
 
 dependencies {
+    implementation(libs.github.glide)
+    annotationProcessor(libs.compiler)
     implementation(libs.retrofit)
     implementation(libs.converter.gson)
     implementation(libs.kotlinx.coroutines.core)
