@@ -6,31 +6,34 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".MenuFragment">
 
+
     <ImageView
         android:id="@+id/logo_store"
         android:layout_width="match_parent"
         android:layout_height="140dp"
         android:layout_marginTop="20dp"
         android:contentDescription="Stores"
-        android:src="@drawable/everfoodlogomoderno" />
+         />
+
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="509dp"
+        android:layout_height="match_parent"
         android:layout_gravity="center"
-        android:layout_marginTop="55dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_marginTop="55dp">
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:paddingHorizontal="20dp">
 
             <EditText
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="10dp"
-                android:layout_marginLeft="20dp"
                 android:layout_weight="1"
                 android:background="@drawable/rounded_corner"
                 android:hint="Buscar"
@@ -51,30 +54,34 @@
                 app:srcCompat="@drawable/search_icon" />
         </LinearLayout>
 
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerViewMenus"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_gravity="center"
             android:layout_weight="1"
-            android:padding="54dp"
+            android:padding="16dp"
             android:scrollbars="vertical" />
+
 
         <Button
             android:id="@+id/carritoButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Ver Carrito" />
+            android:layout_width="112dp"
+            android:layout_height="65dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="70dp"
+            android:background="@drawable/circular_button"
+            android:drawableLeft="@drawable/ic_cart2"
+            android:drawablePadding="20dp"
+            android:padding="22dp"
+            android:text="Ver Carrito"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp" />
+
 
     </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:layout_marginBottom="20dp" />
-
-
 
 </FrameLayout>

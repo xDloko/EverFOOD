@@ -1,23 +1,29 @@
-<!-- res/layout/item_store.xml -->
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@drawable/rounded_corner"
     android:orientation="horizontal"
-    android:padding="16dp">
+    android:padding="12dp"
+    android:gravity="center_vertical">
 
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="400dp"
-        android:gravity="center_vertical"
-        android:orientation="vertical">
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp">
+
 
         <ImageView
             android:id="@+id/producto_imagen"
             android:layout_width="match_parent"
-            android:layout_height="168dp"
+            android:layout_height="160dp"
             android:scaleType="centerCrop"
             android:src="@drawable/youtlogo" />
+
 
         <TextView
             android:id="@+id/productoName"
@@ -25,63 +31,77 @@
             android:layout_height="wrap_content"
             android:text="Nombre de la Comida"
             android:textSize="18sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:layout_marginTop="8dp"
+            android:maxLines="1"
+            android:ellipsize="end" />
+
 
         <TextView
             android:id="@+id/descripcionProduct"
             android:layout_width="match_parent"
-            android:layout_height="76dp"
-            android:text="Descripcion"
-            android:textSize="14sp" />
+            android:layout_height="wrap_content"
+            android:text="Descripción del platillo"
+            android:textSize="14sp"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:layout_marginTop="4dp" />
+
 
         <TextView
             android:id="@+id/precioProduct"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Valor:"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-
+            android:text="Valor:      "
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginTop="12dp" />
 
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="284dp"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
             android:gravity="center_vertical"
-            android:layout_marginLeft="10dp">
-
-            <TextView
-                android:id="@+id/tvContador"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="30sp"
-                android:text="0" />
-
-            <Button
-                android:id="@+id/btnIncrease"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Aumentar" />
+            android:orientation="horizontal">
 
             <Button
                 android:id="@+id/btnDecrease"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Disminuir" />
+                android:layout_marginEnd="12dp"
+                android:padding="8dp"
+                android:text="−"
+                android:textSize="18sp" />
 
+            <TextView
+                android:id="@+id/tvContador"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="0"
+                android:textSize="20sp" />
 
-
+            <Button
+                android:id="@+id/btnIncrease"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:padding="8dp"
+                android:text="＋"
+                android:textSize="18sp" />
         </LinearLayout>
 
         <Button
             android:id="@+id/btnAgregar"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Agregar al Carrito" />
-
+            android:text="Agregar al Carrito"
+            android:textColor="#FFFFFF"
+            android:background="#fe421a"
+            android:layout_marginTop="12dp"
+            android:padding="10dp" />
 
     </LinearLayout>
-
 
 </LinearLayout>

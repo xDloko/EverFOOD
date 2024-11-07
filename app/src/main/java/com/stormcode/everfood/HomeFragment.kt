@@ -11,6 +11,7 @@ import android.widget.Button
 import android.widget.ImageView
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.stormcode.everfood.firstMain.StoreViewModel
@@ -67,6 +68,8 @@ class HomeFragment : Fragment() {
         }
 
         val recyclerViewComidas: RecyclerView = root.findViewById(R.id.recyclerViewComidas)
+        val dividerItemDecoration = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
+        recyclerViewComidas.addItemDecoration(dividerItemDecoration)
 
 
 
