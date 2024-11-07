@@ -45,10 +45,7 @@ class HomeFragment : Fragment() {
 
         viewModel = ViewModelProvider(this).get(StoreViewModel::class.java)
 
-        val btnNavigate: Button = root.findViewById(R.id.pedido_button)
-        btnNavigate.setOnClickListener {
-            findNavController().navigate(R.id.action_homeFragment_to_pedidoFragment)
-        }
+
 
         val logoStore: ImageView = root.findViewById(R.id.logo_store)
 
@@ -60,10 +57,10 @@ class HomeFragment : Fragment() {
 
             if (keypadHeight > screenHeight * 0.15) {
                 logoStore.visibility = View.GONE
-                btnNavigate.visibility = View.GONE
+
             } else {
                 logoStore.visibility = View.VISIBLE
-                btnNavigate.visibility = View.VISIBLE
+
             }
         }
 

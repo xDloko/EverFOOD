@@ -5,16 +5,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ProductosFragment">
 
-    <!-- Imagen del logo del store -->
+    <!-- Imagen del logo del store
     <ImageView
         android:id="@+id/logo_store"
         android:layout_width="match_parent"
         android:layout_height="77dp"
         android:layout_marginTop="20dp"
         android:contentDescription="Stores"
-        android:src="@drawable/everfoodlogomoderno" />
+        android:src="@drawable/everfoodlogomoderno" /> -->
 
-    <!-- Contenedor principal con los elementos de búsqueda y la lista -->
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -22,7 +22,7 @@
         android:orientation="vertical"
         android:layout_marginTop="55dp">
 
-        <!-- Barra de búsqueda -->
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -54,7 +54,7 @@
                 app:srcCompat="@drawable/search_icon" />
         </LinearLayout>
 
-        <!-- RecyclerView centrado -->
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerViewProductos"
             android:layout_width="match_parent"

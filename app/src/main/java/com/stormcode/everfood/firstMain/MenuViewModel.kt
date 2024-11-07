@@ -17,6 +17,7 @@ class MenuViewModel : ViewModel() {
 
     fun loadMenu(tiendaId: String) {
         viewModelScope.launch {
+
             try {
                 val newMenus = RetrofitClient.authService.getMenus(TiendaIdRequest(tienda_id = tiendaId))
                 menusList.addAll(newMenus)

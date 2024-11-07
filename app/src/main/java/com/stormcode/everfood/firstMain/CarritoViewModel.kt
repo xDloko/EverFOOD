@@ -3,6 +3,8 @@ package com.stormcode.everfood.firstMain
 import android.content.Context
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity.MODE_PRIVATE
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.stormcode.everfood.firstMain.adapters.Carrito
@@ -14,6 +16,17 @@ import kotlinx.coroutines.launch
 
 class CarritoViewModel(private var storeId: String) : ViewModel() {
     var carrito: Carrito = Carrito(storeId)
+
+    private val _pedidoExitoso = MutableLiveData<Boolean>()
+    val pedidoExitoso: LiveData<Boolean> get() = _pedidoExitoso
+
+    private val _totalCarrito = MutableLiveData<Double>()
+    val totalCarrito: LiveData<Double> get() = _totalCarrito
+
+
+    init {
+        calcularTotal()
+    }
 
     fun seleccionarTienda(nuevaStoreId: String) {
         if (storeId != nuevaStoreId) {
@@ -29,6 +42,11 @@ class CarritoViewModel(private var storeId: String) : ViewModel() {
 
     fun limpiarCarrito() {
         carrito.limpiarCarrito()
+    }
+
+    fun calcularTotal() {
+        val total = carrito.obtenerItems().sumOf { it.price * it.quantity }
+        _totalCarrito.value = total
     }
 
     fun enviarPedido(userId: String) {
@@ -57,11 +75,15 @@ class CarritoViewModel(private var storeId: String) : ViewModel() {
                 val response = RetrofitClient.authService.enviarPedido(pedido)
                 if (response.isSuccessful) {
                     Log.d("CarritoViewModel", "Pedido enviado exitosamente")
+                    _pedidoExitoso.postValue(true)
+
                 } else {
                     Log.e("CarritoViewModel", "Error al enviar pedido: ${response.errorBody()?.string()}")
+                    _pedidoExitoso.postValue(false)
                 }
             } catch (e: Exception) {
                 Log.e("CarritoViewModel", "Error al enviar pedido: ${e.message}")
+                _pedidoExitoso.postValue(false)
             }
         }
     }

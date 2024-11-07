@@ -26,6 +26,7 @@ class MenuFragment : Fragment() {
     private lateinit var viewModel: MenuViewModel
     private lateinit var carritoViewModel: CarritoViewModel
     private var storeId: String? = null
+    private var menusCargados = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,7 +62,6 @@ class MenuFragment : Fragment() {
             val screenHeight = root.rootView.height
             val keypadHeight = screenHeight - rect.bottom
 
-            // Oculta o muestra el logo de la tienda basado en la visibilidad del teclado
             logoStore.visibility = if (keypadHeight > screenHeight * 0.15) {
                 View.GONE
             } else {
@@ -78,8 +78,13 @@ class MenuFragment : Fragment() {
 
 
 
-        storeId?.let { viewModel.loadMenu(storeId!!) }
+
         Log.d("MenuFragment", "ID de la tienda seleccionada: $storeId")
+
+        if (!menusCargados) {
+            storeId?.let { viewModel.loadMenu(storeId!!) }
+            menusCargados = true
+        }
 
         storeId?.let {
             carritoViewModel.seleccionarTienda(it)
