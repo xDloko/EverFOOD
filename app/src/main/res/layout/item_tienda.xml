@@ -1,52 +1,112 @@
-<!-- res/layout/item_store.xml -->
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:padding="16dp">
-
-
-    <ImageView
-        android:layout_width="64dp"
-        android:layout_height="64dp"
-        android:src="@drawable/everfoodlogomoderno" />
+    android:layout_margin="8dp"
+    android:layout_gravity="center"
+    android:radius="12dp">
 
     <LinearLayout
-        android:layout_width="235dp"
-        android:layout_height="match_parent"
-        android:gravity="center_vertical"
-        android:orientation="vertical">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp">
 
-        <TextView
-            android:id="@+id/storeName"
-            android:layout_width="wrap_content"
+
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginEnd="16dp"
+            android:src="@drawable/everfoodlogomoderno"
+            android:contentDescription="Logo de la tienda"
+            android:scaleType="centerCrop"
+            android:clipToOutline="true" />
+
+
+        <LinearLayout
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Nombre de la Tienda"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+            android:layout_weight="1"
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/storeLocation"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Ubicación"
-            android:textSize="14sp" />
 
-        <TextView
-            android:id="@+id/storeRating"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Rating"
-            android:textSize="14sp" />
+            <TextView
+                android:id="@+id/storeName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="Nombre de la Tienda"
+                android:textColor="#333333"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:gravity="start|center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="18dp"
+                    android:layout_height="18dp" />
+
+                <TextView
+                    android:id="@+id/storeLocation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="Ubicación"
+                    android:textColor="#757575"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:gravity="start|center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="18dp"
+                    android:layout_height="18dp" />
+
+                <TextView
+                    android:id="@+id/storeRating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:text="4.5"
+                    android:textColor="#FFEB3B"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="end|bottom"
+                android:orientation="horizontal"
+                android:layout_marginTop="16dp">
+
+                <Button
+                    android:id="@+id/menubtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ver Menú"
+                    android:backgroundTint="#FF9800"
+                    android:textColor="#FFFFFF"
+                    android:paddingHorizontal="16dp"
+                    android:paddingVertical="8dp"
+                    android:drawableLeft="@drawable/ic_menu"
+                    android:drawablePadding="8dp" />
+            </LinearLayout>
+        </LinearLayout>
     </LinearLayout>
 
-    <Button
-        android:id="@+id/menubtn"
-        android:layout_width="73dp"
-        android:layout_height="67dp"
-        android:layout_weight="1"
-        android:text="Ver menus" />
-
-
-</LinearLayout>
+</androidx.cardview.widget.CardView>

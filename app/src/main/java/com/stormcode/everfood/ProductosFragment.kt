@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.stormcode.everfood.firstMain.CarritoViewModel
@@ -51,6 +52,9 @@ class ProductosFragment : Fragment() {
         val recyclerViewProductos: RecyclerView = root.findViewById(R.id.recyclerViewProductos)
         recyclerViewProductos.layoutManager = LinearLayoutManager(requireContext())
         recyclerViewProductos.adapter = viewModel.productAdapter
+
+        val dividerItemDecoration = DividerItemDecoration(recyclerViewProductos.context, DividerItemDecoration.VERTICAL)
+        recyclerViewProductos.addItemDecoration(dividerItemDecoration)
 
         menuId?.let {
             viewModel.loadProducto(it)
