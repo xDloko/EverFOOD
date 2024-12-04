@@ -15,6 +15,7 @@
 
 
         <ImageView
+            android:id="@+id/storeLogo"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_marginEnd="16dp"

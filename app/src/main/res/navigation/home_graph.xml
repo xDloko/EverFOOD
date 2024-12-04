@@ -18,6 +18,9 @@
         <action
             android:id="@+id/action_homeFragment_to_menuFragment"
             app:destination="@id/menuFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_pedidosFragment"
+            app:destination="@id/pedidosFragment" />
     </fragment>
     <fragment
         android:id="@+id/pedidoFragment"
@@ -49,7 +52,10 @@
             android:id="@+id/action_menuFragment_to_productosFragment"
             app:destination="@id/productosFragment" />
         <action
-            android:id="@+id/action_menuFragment_to_carritofragment"
+            android:id="@+id/action_menuFragment_to_chatFragment"
+            app:destination="@id/chatFragment" />
+        <action
+            android:id="@+id/action_menuFragment_to_carritoFragment"
             app:destination="@id/carritoFragment" />
     </fragment>
     <fragment
@@ -58,13 +64,26 @@
         android:label="fragment_productos"
         tools:layout="@layout/fragment_productos" />
     <fragment
+        android:id="@+id/chatFragment"
+        android:name="com.stormcode.everfood.ChatFragment"
+        android:label="fragment_chat"
+        tools:layout="@layout/fragment_chat" />
+    <fragment
         android:id="@+id/carritoFragment"
         android:name="com.stormcode.everfood.CarritoFragment"
-        android:label="fragment_carritofragment"
-        tools:layout="@layout/fragment_carritofragment" >
+        android:label="CarritoFragment" >
         <action
-            android:id="@+id/action_carritofragment_to_menuFragment"
+            android:id="@+id/action_carritoFragment_to_menuFragment"
             app:destination="@id/menuFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/pedidosFragment"
+        android:name="com.stormcode.everfood.pedidosFragment"
+        android:label="fragment_pedidos"
+        tools:layout="@layout/fragment_pedidos" >
+        <action
+            android:id="@+id/action_pedidosFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
     </fragment>
 
 

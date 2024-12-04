@@ -39,7 +39,7 @@ class ProductAdapter(
         holder.productoName.text = producto.name
         holder.productoDescrt.text = producto.descripcion
         holder.precioProduct.text = producto.precio
-        Log.d("Image URL", "URL de imagen: ${producto.image}")
+
 
         holder.itemView.context?.let { context ->
             Glide.with(context)

@@ -15,6 +15,9 @@
         android:theme="@style/Theme.EverFOOD"
         tools:targetApi="31">
         <activity
+            android:name=".forgotPassword"
+            android:exported="false" />
+        <activity
             android:name=".firstMain.FirstAppActivity"
             android:exported="true"
             android:label="LogIn-EverFOOD"
@@ -27,7 +30,7 @@
         <activity
             android:name=".firstMain.activitys.MainActivity"
             android:exported="true"
-            android:label="Ever Food"
+            android:label="che"
             android:theme="@style/Theme.EverFOOD">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

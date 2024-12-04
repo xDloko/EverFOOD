@@ -10,8 +10,11 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.fragment.app.FragmentActivity
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -24,6 +27,7 @@ import com.stormcode.everfood.R
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
+
     private lateinit var drawer: DrawerLayout
     private lateinit var toggle: ActionBarDrawerToggle
     private lateinit var recyclerView: RecyclerView
@@ -34,8 +38,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val toolbar: androidx.appcompat.widget.Toolbar = findViewById(R.id.toolbar_main)
+        val toolbar: Toolbar = findViewById(R.id.toolbar_main)
         setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayShowTitleEnabled(false)
+
 
         drawer = findViewById(R.id.main)
         toggle = ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
@@ -51,6 +57,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val usuarioTextView: TextView = headerView.findViewById(R.id.nav_header_textView)
         val imagePerfil: ImageButton = headerView.findViewById(R.id.nav_header_imagePerfil)
         val buttonLogOut: Button = headerView.findViewById(R.id.nav_header_logout)
+        val carritobutton: ImageButton = headerView.findViewById(R.id.carritobutton)
 
 
         val sharedPreferences = getSharedPreferences("MyAppPrefs", MODE_PRIVATE)
@@ -61,12 +68,31 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             usuarioTextView.text = email
         }
 
+
+        carritobutton.setOnClickListener {
+            if (isLoggedIn) {
+                val navController = findNavController(R.id.navHomeFragment)
+                try {
+                    navController.navigate(R.id.action_homeFragment_to_pedidosFragment)
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                    Toast.makeText(this, "Error al navegar al perfil: ${e.message}", Toast.LENGTH_SHORT).show()
+                }
+            } else {
+
+                Toast.makeText(this, "No has iniciado sesión", Toast.LENGTH_SHORT).show()
+                val intent = Intent(this, FirstAppActivity::class.java)
+                startActivity(intent)
+                finish()
+            }
+        }
+        
         imagePerfil.setOnClickListener {
             if (isLoggedIn) {
-                // Redirigir al perfil si está logueado
+
                 Toast.makeText(this, "Perfil", Toast.LENGTH_SHORT).show()
             } else {
-                // Redirigir al login si no está logueado
+
                 Toast.makeText(this, "No has iniciado sesión", Toast.LENGTH_SHORT).show()
                 val intent = Intent(this, FirstAppActivity::class.java)
                 startActivity(intent)
@@ -89,25 +115,45 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             }
         }
 
-        // Configuración del RecyclerView
+
         recyclerView = findViewById(R.id.recyclerViewMenus)
         adapter = StoresAdapter(storesList)
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = adapter
-        // Configurar el NavController
+
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.navHomeFragment) as NavHostFragment
         val navController = navHostFragment.navController
 
-        // Configurar el NavigationView con el NavController
+
         NavigationUI.setupWithNavController(navigationView, navController)
 
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        val sharedPreferences = getSharedPreferences("MyAppPrefs", MODE_PRIVATE)
+        val isLoggedIn = sharedPreferences.getBoolean("isLoggedIn", false)
+
+        val navController = findNavController(R.id.navHomeFragment)
+
         when (item.itemId) {
-            R.id.nav_item_one -> Toast.makeText(this, "Perfil", Toast.LENGTH_SHORT).show()
-            R.id.nav_item_two -> Toast.makeText(this, "Carrito", Toast.LENGTH_SHORT).show()
-            R.id.nav_item_three -> Toast.makeText(this, "Contáctanos", Toast.LENGTH_SHORT).show()
+            R.id.nav_item_two -> {
+                if (isLoggedIn) {
+                    navController.navigate(R.id.action_homeFragment_to_pedidosFragment)
+                } else {
+                    Toast.makeText(this, "No has iniciado sesión", Toast.LENGTH_SHORT).show()
+                    val intent = Intent(this, FirstAppActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                }
+            }
+            R.id.nav_item_one -> {
+                Toast.makeText(this, "Perfil", Toast.LENGTH_SHORT).show()
+
+            }
+            R.id.nav_item_three -> {
+                Toast.makeText(this, "Contáctanos", Toast.LENGTH_SHORT).show()
+
+            }
         }
 
         drawer.closeDrawer(GravityCompat.START)

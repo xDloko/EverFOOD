@@ -51,6 +51,7 @@ android {
 }
 
 dependencies {
+    implementation (libs.okhttp)
     implementation(libs.github.glide)
     annotationProcessor(libs.compiler)
     implementation(libs.retrofit)

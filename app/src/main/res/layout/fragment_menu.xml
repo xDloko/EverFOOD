@@ -63,6 +63,17 @@
             android:layout_weight="1"
             android:padding="16dp"
             android:scrollbars="vertical" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="180dp"
+        android:layout_height="133dp"
+        android:layout_gravity="bottom|center"
+        android:orientation="horizontal"
+
+
+
+        >
 
 
         <Button
@@ -70,16 +81,26 @@
             android:layout_width="112dp"
             android:layout_height="65dp"
             android:layout_gravity="center"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="70dp"
             android:background="@drawable/circular_button"
             android:drawableLeft="@drawable/ic_cart2"
             android:drawablePadding="20dp"
-            android:padding="22dp"
-            android:text="Ver Carrito"
+            android:padding="20dp"
+            android:layout_marginRight="20dp"
             android:textAllCaps="false"
             android:textColor="#FFFFFF"
             android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/chatButton"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:background="@drawable/circular_button"
+            android:drawableLeft="@drawable/chat_ic"
+            android:padding="12dp"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp" />
 
 
     </LinearLayout>

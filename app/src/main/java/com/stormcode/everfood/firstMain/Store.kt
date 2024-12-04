@@ -7,5 +7,6 @@ data class Store(
     val direccion: String,
     val description: String,
     val rating: String,
+    val image: String
 
 )

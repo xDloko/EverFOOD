@@ -3,9 +3,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.stormcode.everfood.ProductosFragment
 import com.stormcode.everfood.firstMain.Menu
 import com.stormcode.everfood.R
@@ -16,6 +18,7 @@ class MenuAdapter(private val menusList: MutableList<Menu>) : RecyclerView.Adapt
         val menuName: TextView = view.findViewById(R.id.menuName)
         //val productPrice: TextView = view.findViewById(R.id.tienda_id)
         val productobtn: Button = view.findViewById(R.id.productobtn)
+        val menuImagen: ImageView = view.findViewById(R.id.menuImage)
 
     }
 
@@ -34,6 +37,14 @@ class MenuAdapter(private val menusList: MutableList<Menu>) : RecyclerView.Adapt
                 .replace(R.id.navHomeFragment, fragment)
                 .addToBackStack(null)
                 .commit()
+        }
+
+        holder.itemView.context?.let { context ->
+            Glide.with(context)
+                .load(menu.image)
+                .placeholder(R.drawable.placeholder)
+                .error(R.drawable.error)
+                .into(holder.menuImagen)
         }
 
 

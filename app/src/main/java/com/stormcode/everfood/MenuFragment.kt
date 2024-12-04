@@ -99,7 +99,14 @@ class MenuFragment : Fragment() {
         carritoButton.setOnClickListener {
 
             val carritoFragment = CarritoFragment.newInstance(storeId!!)
-            findNavController().navigate(R.id.action_menuFragment_to_carritofragment, carritoFragment.arguments)
+            findNavController().navigate(R.id.action_menuFragment_to_carritoFragment, carritoFragment.arguments)
+        }
+
+        val chatbutton: Button = view.findViewById(R.id.chatButton)
+        chatbutton.setOnClickListener {
+            val chatFragment = ChatFragment.newInstance(storeId!!)
+            findNavController().navigate(R.id.action_menuFragment_to_chatFragment, chatFragment.arguments)
+
         }
 
         val items = carritoViewModel.carrito.obtenerItems()

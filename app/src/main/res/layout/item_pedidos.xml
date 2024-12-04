@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp"
+    android:background="@drawable/rounded_corner"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tiendaName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tienda"
+        android:textSize="21sp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/total"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Total: $0.0"
+        android:textSize="16sp"/>
+
+    <TextView
+        android:id="@+id/estado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Estado: Pendiente"
+        android:textSize="16sp"/>
+</LinearLayout>

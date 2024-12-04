@@ -6,10 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.FragmentActivity
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.stormcode.everfood.MenuFragment
 import com.stormcode.everfood.firstMain.Store
 import com.stormcode.everfood.R
@@ -21,6 +23,9 @@ class StoresAdapter(private val storesList: MutableList<Store>) : RecyclerView.A
         val storeName: TextView = view.findViewById(R.id.storeName)
         val storeLocation: TextView = view.findViewById(R.id.storeLocation)
         val storeRating: TextView = view.findViewById(R.id.storeRating)
+        val storelogo: ImageView = view.findViewById(R.id.storeLogo)
+
+
     }
 
 
@@ -41,6 +46,14 @@ class StoresAdapter(private val storesList: MutableList<Store>) : RecyclerView.A
                 putString("tienda_id", store._id)
             })
         }
+        holder.itemView.context?.let { context ->
+            Glide.with(context)
+                .load(store.image)
+                .placeholder(R.drawable.placeholder)
+                .error(R.drawable.error)
+                .into(holder.storelogo)
+        }
+
     }
 
 

@@ -17,6 +17,7 @@ import com.stormcode.everfood.firstMain.api.LoginRequest
 import com.stormcode.everfood.firstMain.api.LoginResponse
 import com.stormcode.everfood.firstMain.api.RetrofitClient
 import com.stormcode.everfood.R
+import com.stormcode.everfood.forgotPassword
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -34,9 +35,15 @@ class FirstAppActivity : AppCompatActivity() {
         val passwordEditText: EditText = findViewById(R.id.password_input)
         val loginBtn: Button = findViewById(R.id.login_button)
 
+        val forgotPasswordButton: Button = findViewById(R.id.forgot_password_button)
         val sharedPreferences = getSharedPreferences("MyAppPrefs", MODE_PRIVATE)
         val editor = sharedPreferences.edit()
 
+
+        forgotPasswordButton.setOnClickListener {
+            val intent = Intent(this, forgotPassword::class.java)
+            startActivity(intent)
+        }
 
 
         loginBtn.setOnClickListener {

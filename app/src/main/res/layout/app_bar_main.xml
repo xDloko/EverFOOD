@@ -18,11 +18,28 @@
             style="@style/CustomTollBarStyle"
             android:padding="10dp"
             android:id="@+id/toolbar_main"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:title="Ever Food"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@drawable/side_nav_bar"
+            android:background="@drawable/rounded_corner_black"
             app:layout_scrollFlags="scroll|enterAlways"
-            />
+            >
+
+            <TextView
+                android:id="@+id/toolbar_title"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_marginTop="10dp"
+                android:text="Ever Food"
+                android:textSize="20sp"
+                android:textColor="@android:color/white" />
+
+
+        </androidx.appcompat.widget.Toolbar>
 
 
 
