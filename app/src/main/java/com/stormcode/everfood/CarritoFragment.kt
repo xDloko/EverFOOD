@@ -127,9 +127,9 @@ class CarritoFragment : Fragment() {
             if (exito) {
                 Toast.makeText(context, "Pedido realizado con éxito", Toast.LENGTH_SHORT).show()
                 carritoViewModel.limpiarCarrito()
-            } else {
-                Toast.makeText(context, "Hubo un error al realizar el pedido", Toast.LENGTH_SHORT).show()
-            }
+                carritoViewModel.resetPedidoExitoso()
+
+            } 
         }
 
         return root

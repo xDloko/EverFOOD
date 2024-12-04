@@ -25,6 +25,11 @@ class ChatAdapter(
         notifyItemInserted(messages.size - 1)
     }
 
+    fun clearMessages() {
+        messages.clear()
+        notifyDataSetChanged()
+    }
+
     override fun getItemViewType(position: Int): Int {
         val message = messages[position]
         return if (message.getString("sender") == currentUserId) VIEW_TYPE_SENT else VIEW_TYPE_RECEIVED

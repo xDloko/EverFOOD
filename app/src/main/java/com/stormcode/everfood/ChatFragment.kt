@@ -22,6 +22,8 @@ import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import android.os.Handler
+import android.os.Looper
 
 class ChatFragment : Fragment() {
     private lateinit var webSocketManager: WebSocketManager
@@ -32,6 +34,10 @@ class ChatFragment : Fragment() {
     private lateinit var sendButton: View
     private var storeId: String? = null
     private lateinit var chatAdapter: ChatAdapter
+    private val handler = Handler(Looper.getMainLooper())
+    private val updateInterval: Long = 8000
+
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -80,6 +86,7 @@ class ChatFragment : Fragment() {
                     override fun onMessageReceived(message: JSONObject) {
                         requireActivity().runOnUiThread {
                             chatAdapter.addMessage(message)
+                            loadChatHistory(userId, userType!!, storeId!!, storeType!!)
                         }
                     }
 
@@ -126,6 +133,7 @@ class ChatFragment : Fragment() {
             }
         }
 
+
         return view
     }
 
@@ -140,6 +148,9 @@ class ChatFragment : Fragment() {
                 override fun onResponse(call: Call<MessagesResponse>, response: Response<MessagesResponse>) {
                     if (response.isSuccessful) {
                         val messages = response.body()?.messages ?: emptyList()
+
+
+                        chatAdapter.clearMessages()
                         for (message in messages) {
                             val jsonMessage = JSONObject().apply {
                                 put("sender", message.sender)
@@ -158,6 +169,8 @@ class ChatFragment : Fragment() {
                 }
             })
     }
+
+
 
 
 

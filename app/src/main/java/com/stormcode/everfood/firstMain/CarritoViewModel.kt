@@ -23,6 +23,9 @@ class CarritoViewModel(private var storeId: String) : ViewModel() {
     private val _totalCarrito = MutableLiveData<Double>()
     val totalCarrito: LiveData<Double> get() = _totalCarrito
 
+    fun resetPedidoExitoso() {
+        _pedidoExitoso.postValue(false)
+    }
 
     init {
         calcularTotal()
